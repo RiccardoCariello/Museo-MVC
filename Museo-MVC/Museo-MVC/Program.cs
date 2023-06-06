@@ -1,4 +1,15 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Museo_MVC.DataBase;
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("MuseoContextConnection") ?? throw new InvalidOperationException("Connection string 'MuseoContextConnection' not found.");
+
+
+builder.Services.AddDbContext<MuseoContext>();
+
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<MuseoContext>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -26,5 +37,7 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapRazorPages();
 
 app.Run();
