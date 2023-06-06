@@ -28,5 +28,41 @@ namespace Museo_MVC.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
+        // PAGINA CON SINGOLO SOUVENIR
+        public IActionResult Details(int id)
+        {
+            using (MuseoContext db = new MuseoContext())
+            {
+                Souvenir? souvenirDetails = db.?.Where(souvenir => souvenir.Id == id).FirstOrDefault();
+
+                if (souvenirDetails != null)
+                {
+                    return View("Details", souvenirDetails);
+                }
+                else
+                {
+                    return NotFound($"L'articolo con id {id} non è stato trovato!");
+                }
+            }
+
+        }
+
+
+
+
     }
+
+
+
+
+
+
+
+
+
+
+
+}
 }
