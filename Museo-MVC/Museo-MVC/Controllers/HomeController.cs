@@ -50,7 +50,7 @@ namespace Museo_MVC.Controllers
 
         }
 
-        // ACTIONS PER LA CREAZIONE DI UN ARTICOLO
+        // ACTIONS PER LA CREAZIONE DI UN SOUVENIR
         [HttpGet]
         public IActionResult Create()
         {
@@ -76,7 +76,7 @@ namespace Museo_MVC.Controllers
 
         }
 
-        // ACTIONS PER LA MODIFICA DI UN ARTICOLO
+        // ACTIONS PER LA MODIFICA DI UN SOUVENIR
         [HttpGet]
         public IActionResult Update(int id)
         {
