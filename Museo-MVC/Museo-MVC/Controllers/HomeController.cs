@@ -44,7 +44,7 @@ namespace Museo_MVC.Controllers
                 }
                 else
                 {
-                    return NotFound($"L'articolo con id {id} non è stato trovato!");
+                    return NotFound($"Il souvenir con id {id} non è stato trovato!");
                 }
             }
 
