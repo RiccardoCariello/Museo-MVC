@@ -8,7 +8,7 @@ namespace Museo_MVC.DataBase
     {
 
 
-        public DbSet<Souvenir> Souvenir { get ; set };
+        public DbSet<Souvenir> Souvenir { get; set; }
 
         public DbSet<Category> Category { get; set; }
 
