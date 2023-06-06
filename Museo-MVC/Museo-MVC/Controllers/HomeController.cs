@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Museo_MVC.DataBase;
 using Museo_MVC.Models;
 using System.Diagnostics;
 
@@ -35,7 +36,7 @@ namespace Museo_MVC.Controllers
         {
             using (MuseoContext db = new MuseoContext())
             {
-                Souvenir? souvenirDetails = db.?.Where(souvenir => souvenir.Id == id).FirstOrDefault();
+                Souvenir? souvenirDetails = db.Souvenir.Where(souvenir => souvenir.Id == id).FirstOrDefault();
 
                 if (souvenirDetails != null)
                 {
@@ -49,6 +50,109 @@ namespace Museo_MVC.Controllers
 
         }
 
+        // ACTIONS PER LA CREAZIONE DI UN ARTICOLO
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Souvenir newSouvenir)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Create", newSouvenir);
+            }
+
+            using (MuseoContext db = new MuseoContext())
+            {
+                db.Souvenir.Add(newSouvenir);
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+
+        }
+
+        // ACTIONS PER LA MODIFICA DI UN ARTICOLO
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            using (MuseoContext db = new MuseoContext())
+            {
+                Souvenir? souvenirToModify = db.Souvenir.Where(souvenir => souvenir.Id == id).FirstOrDefault();
+
+                if (souvenirToModify != null)
+                {
+                    return View("Update", souvenirToModify);
+                }
+                else
+                {
+
+                    return NotFound("Souvenir da modificare inesistente!");
+                }
+            }
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(int id, Souvenir modifiedSouvenir)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Update", modifiedSouvenir);
+            }
+
+            using (MuseoContext db = new MuseoContext())
+            {
+                Souvenir? articleToModify = db.Souvenir.Where(souvenir => souvenir.Id == id).FirstOrDefault();
+
+                if (souvenirToModify != null)
+                {
+
+                    souvenirToModify.Img = souvenirToModify.Img;
+                    souvenirToModify.Name = souvenirToModify.Name;
+                    souvenirToModify.Description = souvenirToModify.Description;
+                    souvenirToModify.Price = souvenirToModify.Price;
+
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+
+                }
+                else
+                {
+                    return NotFound("Il souvenir da modificare non esiste!");
+                }
+            }
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int id)
+        {
+            using (MuseoContext db = new MuseoContext())
+            {
+                Souvenir? articleToDelete = db.souvenir.Where(souvenir => souvenir.Id == id).FirstOrDefault();
+
+                if (souvenirToDelete != null)
+                {
+                    db.Remove(souvenirToDelete);
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index");
+
+                }
+                else
+                {
+                    return NotFound("Non ho torvato il souvenir da eliminare");
+
+                }
+            }
+        }
 
 
 
@@ -64,5 +168,4 @@ namespace Museo_MVC.Controllers
 
 
 
-}
 }
