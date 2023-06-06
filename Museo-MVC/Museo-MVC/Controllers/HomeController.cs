@@ -16,11 +16,10 @@ namespace Museo_MVC.Controllers
 
         public IActionResult Index()
         {
-            using (MuseoContext db = new())
-            {
-                List<Souvenir> souvenir = db.Souvenirs.ToList();
-                return View(souvenir);
-            }
+            
+                
+                return View();
+            
 
         }
         public IActionResult Privacy()
