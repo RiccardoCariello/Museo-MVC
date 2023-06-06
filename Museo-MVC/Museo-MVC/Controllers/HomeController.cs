@@ -35,7 +35,7 @@ namespace Museo_MVC.Controllers
         {
             using (MuseoContext db = new MuseoContext())
             {
-                Souvenir? souvenirDetails = db.Articles.Where(souvenir => souvenir.Id == id).FirstOrDefault();
+                Souvenir? souvenirDetails = db.?.Where(souvenir => souvenir.Id == id).FirstOrDefault();
 
                 if (souvenirDetails != null)
                 {
@@ -49,108 +49,6 @@ namespace Museo_MVC.Controllers
 
         }
 
-        // ACTIONS PER LA CREAZIONE DI UN ARTICOLO
-        [HttpGet]
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create(Article newArticle)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View("Create", newArticle);
-            }
-
-            using (MuseoContext db = new MuseoContext())
-            {
-                db.Articles.Add(newArticle);
-                db.SaveChanges();
-
-                return RedirectToAction("Index");
-            }
-
-        }
-
-        // ACTIONS PER LA MODIFICA DI UN ARTICOLO
-        [HttpGet]
-        public IActionResult Update(int id)
-        {
-            using (MuseoContext db = new MuseoContext())
-            {
-                Article? articleToModify = db.Articles.Where(article => article.Id == id).FirstOrDefault();
-
-                if (articleToModify != null)
-                {
-                    return View("Update", articleToModify);
-                }
-                else
-                {
-
-                    return NotFound("Articolo da modifcare inesistente!");
-                }
-            }
-
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Update(int id, Article modifiedArticle)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View("Update", modifiedArticle);
-            }
-
-            using (MuseoContext db = new MuseoContext())
-            {
-                Article? articleToModify = db.Articles.Where(article => article.Id == id).FirstOrDefault();
-
-                if (articleToModify != null)
-                {
-
-                    articleToModify.Title = modifiedArticle.Title;
-                    articleToModify.Description = modifiedArticle.Description;
-                    articleToModify.Image = modifiedArticle.Image;
-
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-
-                }
-                else
-                {
-                    return NotFound("L'articolo da modificare non esiste!");
-                }
-            }
-
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Delete(int id)
-        {
-            using (MuseoContext db = new MuseoContext())
-            {
-                Article? articleToDelete = db.Articles.Where(article => article.Id == id).FirstOrDefault();
-
-                if (articleToDelete != null)
-                {
-                    db.Remove(articleToDelete);
-                    db.SaveChanges();
-
-                    return RedirectToAction("Index");
-
-                }
-                else
-                {
-                    return NotFound("Non ho torvato l'articolo da eliminare");
-
-                }
-            }
-        }
 
 
 
