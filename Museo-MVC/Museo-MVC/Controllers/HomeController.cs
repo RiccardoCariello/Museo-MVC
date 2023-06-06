@@ -108,7 +108,7 @@ namespace Museo_MVC.Controllers
 
             using (MuseoContext db = new MuseoContext())
             {
-                Souvenir? articleToModify = db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault();
+                Souvenir? souvenirToModify = db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault();
 
                 if (souvenirToModify != null)
                 {
@@ -136,7 +136,7 @@ namespace Museo_MVC.Controllers
         {
             using (MuseoContext db = new MuseoContext())
             {
-                Souvenir? articleToDelete = db.souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault();
+                Souvenir? souvenirToDelete = db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault();
 
                 if (souvenirToDelete != null)
                 {
