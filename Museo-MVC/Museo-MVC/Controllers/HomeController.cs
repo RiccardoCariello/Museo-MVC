@@ -22,6 +22,26 @@ namespace Museo_MVC.Controllers
             
 
         }
+        
+        [HttpGet]
+        public IActionResult Souvenir()
+        {
+            using(MuseoContext db = new MuseoContext())
+            {
+                List<Souvenir>? souvenirs = db.Souvenirs.ToList();
+                if (souvenirs != null)
+                {
+
+                    return View("Souvenir", souvenirs);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+        }
+
+
         public IActionResult Privacy()
         {
             return View();
