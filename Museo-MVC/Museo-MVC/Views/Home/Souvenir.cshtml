@@ -2,8 +2,8 @@
 
 <div class="container mt-5">
     <div class="row">
-        <div class="col-12">
-            <h3>Lista dei Souvenir</h3>
+        <div class="col-12 d-block justify-content-center">
+            <h3>I NOSTRI SOUVENIR</h3>
         </div>
     </div>
     @if (User.IsInRole("ADMIN"))
@@ -19,29 +19,18 @@
     <div class="row my-3">
         <div class="col-12">
 
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">Img</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Description</th>
-
-                    </tr>
-                </thead>
-                <tbody>
+           
                     @foreach (Souvenir souvenir in Model)
                     {
-                        <tr>
-                            <th scope="row">@souvenir.Id</th>
-                            <td><img class="img-fluid img_square" src="@souvenir.Img" style="width: 10rem;" alt="Immagine @souvenir.Name"></td>
-                            <td>@souvenir.Name</td>
-                            <td>
-                                @souvenir.Description
-                            </td>
-                            <td>
-                                <a class="btn btn-info btn-sm" href="@Url.Action("Details", "Home", new { id = souvenir.Id })">
+                            <div class="card" style="width: 18rem;">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                </div>
+                            </div>
+                                <a class="btn btn-info btn-sm" href="@Url.Action("Details", "Souvenir", new { id = souvenir.Id })">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
                                 </a>
                                 @if (User.IsInRole("ADMIN"))
@@ -56,11 +45,9 @@
                                         </button>
                                     </form>
                                 }
-                            </td>
-                        </tr>
+                           
                     }
-                </tbody>
-            </table>
+                
 
         </div>
     </div>
