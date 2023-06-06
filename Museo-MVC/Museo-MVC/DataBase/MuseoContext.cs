@@ -1,10 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Museo_MVC.Models;
 
 
 namespace Museo_MVC.DataBase
 {
-    public class MuseoContext : DbContext
+    public class MuseoContext : IdentityDbContext<IdentityUser>
+
     {
 
 
