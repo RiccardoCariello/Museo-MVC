@@ -6,6 +6,7 @@ namespace Museo_MVC.Controllers
 {
 	public class SouvenirController1 : Controller
 	{
+		[HttpGet]
 		public IActionResult Index()
 		{
 			return View();

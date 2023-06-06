@@ -1,5 +1,49 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using Museo_MVC.Models.ModelForViews
+@model SouvenirListCategory;
+
+<h1>Aggiungi qui il tuo Souvenir</h1>
+<div class="container">
+	<form asp-controller="Home" asp-action="Create" metohd="post">
+		<div class="row">
+			<div class="col">
+
+				@Html.AntiForgeryToken()
+				<div class="mb-3">
+					<label asp-for="Souvenirs.Img" class="form-label">Immagine</label>
+					<input asp-for="Souvenirs.Img" type="text" class="form-control" placeholder="URL/Percorso..." required>
+					<span asp-validation-for="Souvenirs.Img" class="text-danger"></span>
+				</div>
+				<div class="mb-3">
+					<label asp-for="Souvenirs.Name" class="form-label">Nome</label>
+					<textarea asp-for="Souvenirs.Name" rows="10" class="form-control" placeholder="Nome..."></textarea>
+					<span asp-validation-for="Souvenirs.Name" class="text-danger"></span>
+				</div>
+				<div class="mb-3">
+					<label asp-for="Souvenirs.Description" class="form-label">Descrizione</label>
+					<input asp-for="Souvenirs.Description" type="text" class="form-control" placeholder="Descrizione..." required>
+					<span asp-validation-for="Souvenirs.Description" class="text-danger"></span>
+				</div>
+				<div class="mb-3">
+					<label asp-for="Souvenirs.Price" class="form-label">Prezzo</label>
+					<input asp-for="Souvenirs.Price" type="text" class="form-control" placeholder="Prezzo..." required>
+					<span asp-validation-for="Souvenirs.Price" class="text-danger"></span>
+				</div>
+				<div class="mb-3">
+					<strong>Categoria:</strong>
+					<select asp-for="Souvenirs.CategoryId" title="SouvenirCategory" rows="10" class="d-block w-100">
+						<option value=""></option>
+						@foreach (Category category in Model.Categories ?? new List<Category>())
+						{
+							<option value="@category.Id" selected="@(Model.Souvenirs.CategoryId == category.Id ? "selected" : null)">@category.Name</option>
+						}
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<button type="submit" class="btn btn-primary">Aggiungi</button>
+			</div>
+		</div>
+	</form>
+</div>
