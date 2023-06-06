@@ -36,7 +36,7 @@ namespace Museo_MVC.Controllers
         {
             using (MuseoContext db = new MuseoContext())
             {
-                Souvenir? souvenirDetails = db.Souvenir.Where(souvenir => souvenir.Id == id).FirstOrDefault();
+                Souvenir? souvenirDetails = db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault();
 
                 if (souvenirDetails != null)
                 {
@@ -68,7 +68,7 @@ namespace Museo_MVC.Controllers
 
             using (MuseoContext db = new MuseoContext())
             {
-                db.Souvenir.Add(newSouvenir);
+                db.Souvenirs.Add(newSouvenir);
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
@@ -82,7 +82,7 @@ namespace Museo_MVC.Controllers
         {
             using (MuseoContext db = new MuseoContext())
             {
-                Souvenir? souvenirToModify = db.Souvenir.Where(souvenir => souvenir.Id == id).FirstOrDefault();
+                Souvenir? souvenirToModify = db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault();
 
                 if (souvenirToModify != null)
                 {
@@ -108,7 +108,7 @@ namespace Museo_MVC.Controllers
 
             using (MuseoContext db = new MuseoContext())
             {
-                Souvenir? articleToModify = db.Souvenir.Where(souvenir => souvenir.Id == id).FirstOrDefault();
+                Souvenir? articleToModify = db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault();
 
                 if (souvenirToModify != null)
                 {
@@ -136,7 +136,7 @@ namespace Museo_MVC.Controllers
         {
             using (MuseoContext db = new MuseoContext())
             {
-                Souvenir? articleToDelete = db.souvenir.Where(souvenir => souvenir.Id == id).FirstOrDefault();
+                Souvenir? articleToDelete = db.souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault();
 
                 if (souvenirToDelete != null)
                 {
