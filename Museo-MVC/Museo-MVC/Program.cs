@@ -9,6 +9,7 @@ builder.Services.AddDbContext<MuseoContext>();
 
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<MuseoContext>();
 
 // Add services to the container.
