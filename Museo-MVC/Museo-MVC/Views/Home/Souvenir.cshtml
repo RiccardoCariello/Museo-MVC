@@ -28,12 +28,10 @@
                                     <h5 class="card-title">@souvenir.Name</h5>
                                     <p class="card-text">@souvenir.Description</p>
                                     <p class="card-text">@souvenir.Price</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    <a href="@Url.Action("Details", "Home", new { id = souvenir.Id })" class="btn btn-primary">More Information</a>
                                 </div>
                             </div>
-                                <a class="btn btn-info btn-sm" href="@Url.Action("Details", "Home", new { id = souvenir.Id })">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                                </a>
+                               
                                 @if (User.IsInRole("ADMIN"))
                                 {
                                     <a class="btn btn-warning btn-sm mt-2" href="@Url.Action("Update", "Home", new {id = souvenir.Id})">
