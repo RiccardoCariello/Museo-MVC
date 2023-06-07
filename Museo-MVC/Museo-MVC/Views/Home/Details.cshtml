@@ -17,7 +17,7 @@
                     <p class="card-text">@Model.Description</p>
                     @if (User.IsInRole("ADMIN"))
                     {
-                        <a href="@Url.Action("Update", "Home")" class="btn btn-primary">Modifica.</a>
+                        <a href="@Url.Action("Update", "Home", new {id = Model.Id})" class="btn btn-primary">Modifica.</a>
                     }
 
 
