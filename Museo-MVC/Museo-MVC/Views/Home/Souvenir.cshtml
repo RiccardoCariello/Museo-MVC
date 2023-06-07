@@ -6,11 +6,11 @@
             <h3>I NOSTRI SOUVENIR</h3>
         </div>
     </div>
-    @if (User.IsInRole("ADMIN"))
+    @if(User.IsInRole("ADMIN"))
     {
         <div class="row">
             <div class="col-12">
-                <a class="btn btn-primary" href="@Url.Action("Create", "Home")">
+                <a class="btn btn-dark" href="@Url.Action("Create", "Home")">
                     Inserisci un nuovo Souvenir
                 </a>
             </div>

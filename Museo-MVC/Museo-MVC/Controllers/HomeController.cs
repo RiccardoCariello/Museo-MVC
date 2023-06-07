@@ -6,7 +6,7 @@ using System.Diagnostics;
 
 namespace Museo_MVC.Controllers
 {
-    [Authorize(Roles = "ADMIN,USER")]
+    //[Authorize(Roles = "ADMIN,USER")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
