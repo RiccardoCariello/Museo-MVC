@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Museo_MVC.DataBase;
 using Museo_MVC.Models;
+using Museo_MVC.Models.ModelForViews;
 using System.Diagnostics;
 
 namespace Museo_MVC.Controllers
@@ -81,21 +82,35 @@ namespace Museo_MVC.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View();
+            using(MuseoContext db = new MuseoContext())
+            {
+                List<Category> souvenirCategories = new List<Category>();
+                SouvenirListCategory modelForView = new SouvenirListCategory();
+                modelForView.Souvenirs = new Souvenir();
+                modelForView.Categories = souvenirCategories;
+
+                return View(modelForView);
+            }
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Souvenir newSouvenir)
+        public IActionResult Create(SouvenirListCategory newSouvenir)
         {
             if (!ModelState.IsValid)
             {
-                return View("Create", newSouvenir);
+                using(MuseoContext db = new MuseoContext())
+                {
+                    List<Category> souvenirCategories = db.Categories.ToList();
+                    newSouvenir.Categories = souvenirCategories;
+					return View("Create", newSouvenir);
+				}
+                
             }
 
             using (MuseoContext db = new MuseoContext())
             {
-                db.Souvenirs.Add(newSouvenir);
+                db.Souvenirs.Add(newSouvenir.Souvenirs);
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
