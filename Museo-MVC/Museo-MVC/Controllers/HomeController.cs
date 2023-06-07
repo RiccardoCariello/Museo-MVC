@@ -77,6 +77,25 @@ namespace Museo_MVC.Controllers
 
         }
 
+        //PAGINA CONFERMA ELIMINAZIONE
+        public IActionResult ConfirmDelete(int id)
+        {
+            using (MuseoContext db = new MuseoContext())
+            {
+                Souvenir? souvenirDelete = db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault();
+
+                if (souvenirDelete != null)
+                {
+                    return View("ConfirmDelete", souvenirDelete);
+                }
+                else
+                {
+                    return NotFound($"Il souvenir con id {id} non è stato trovato!");
+                }
+            }
+
+        }
+
         // ACTIONS PER LA CREAZIONE DI UN SOUVENIR
         [Authorize(Roles = "ADMIN")]
         [HttpGet]
