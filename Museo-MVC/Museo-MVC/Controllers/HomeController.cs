@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Museo_MVC.DataBase;
 using Museo_MVC.Models;
 using System.Diagnostics;
 
 namespace Museo_MVC.Controllers
 {
+    [Authorize(Roles = "ADMIN,USER")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -74,6 +76,7 @@ namespace Museo_MVC.Controllers
         }
 
         // ACTIONS PER LA CREAZIONE DI UN SOUVENIR
+        [Authorize(Roles = "ADMIN")]
         [HttpGet]
         public IActionResult Create()
         {
@@ -99,8 +102,9 @@ namespace Museo_MVC.Controllers
 
         }
 
-        // ACTIONS PER LA MODIFICA DI UN SOUVENIR
-        [HttpGet]
+		// ACTIONS PER LA MODIFICA DI UN SOUVENIR
+		[Authorize(Roles = "ADMIN")]
+		[HttpGet]
         public IActionResult Update(int id)
         {
             using (MuseoContext db = new MuseoContext())
@@ -153,7 +157,8 @@ namespace Museo_MVC.Controllers
 
         }
 
-        [HttpPost]
+		[Authorize(Roles = "ADMIN")]
+		[HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)
         {
