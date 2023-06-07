@@ -38,9 +38,13 @@ body {
 
 .card_border {
     border: 1px solid #FFC26F;
-    background-color: #F9E0BB;
+    background-color: #C38154;
 }
 
 .card_text {
     text-decoration-color: #FFC26F;
+}
+
+.button_color {
+    color: #FFC26F;
 }
