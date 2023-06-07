@@ -27,8 +27,8 @@
                     <div class=" justify-content-between">
                         @if (User.IsInRole("ADMIN"))
                         {
-                            <a href="@Url.Action("Update", "Home")" class="btn btn-primary">Modifica.</a>
-                            <a href="@Url.Action("Delete", "Home")" class="btn btn-primary">Elimina.</a>
+                            <a href="@Url.Action("Update", "Home", new {id = Model.Id})" class="btn btn-primary">Modifica.</a>
+                            <a href="@Url.Action("Delete", "Home", new {id = Model.Id})" class="btn btn-primary">Elimina.</a>
                         }
 
                     </div>
