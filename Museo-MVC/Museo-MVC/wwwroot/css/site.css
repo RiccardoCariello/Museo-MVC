@@ -29,3 +29,13 @@ body {
     height: 100vh;
     /* Altri stili per l'elemento di sfondo, ad esempio altezza e larghezza */
 }
+
+
+.card_border {
+    border: 1px solid #CBE4DE;
+    background-color: #0E8388;
+}
+
+.card_text {
+    text-decoration-color: #CBE4DE;
+}
