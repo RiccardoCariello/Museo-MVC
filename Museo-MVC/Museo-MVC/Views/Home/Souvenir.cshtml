@@ -8,44 +8,39 @@
     </div>
     
     <div class="row my-5 justify-content-center">
-        
+        @foreach (Souvenir souvenir in Model)
+        {
+            <div class="col-4 justify-content-center ">
 
-           
-                    @foreach (Souvenir souvenir in Model)
-                    {
-                        <div class="col-4 justify-content-center ">
+                <div class="card card_border" >
+                    <img src="@souvenir.Img" class="card-img-top" alt="Foto Souvenir">
+                    <div class="card-body">
+                        <h5 class="card-title">@souvenir.Name</h5>
 
-                            <div class="card card_border" >
-                                <img src="@souvenir.Img" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">@souvenir.Name</h5>
+                        <p class="card-text card_text">@souvenir.Price &#8364;</p>
 
-                                    <p class="card-text card_text">@souvenir.Price &#8364;</p>
+                        <div class="d-flex align-items-center justify-content-around">
 
-                                    <div class="d-flex align-items-center justify-content-around">
+                            <a href="@Url.Action("Details", "Home", new { id = souvenir.Id })">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                            </a>
 
-                                        <a href="@Url.Action("Details", "Home", new { id = souvenir.Id })">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                                        </a>
-
-                                        @if (User.IsInRole("ADMIN"))
-                                        {
-                                            <a  href="@Url.Action("Update", "Home", new {id = souvenir.Id})">
+                            @if (User.IsInRole("ADMIN"))
+                            {
+                                <a  href="@Url.Action("Update", "Home", new {id = souvenir.Id})">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><polygon points="14 2 18 6 7 17 3 17 3 13 14 2"></polygon><line x1="3" y1="22" x2="21" y2="22"></line></svg>
-                                            </a>
-                                            <a href="@Url.Action("ConfirmDelete", "Home", new {id = souvenir.Id})">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-                                            </a>
-                                        }
-                                    </div>
-
-                                </div>
-                            </div>
-
+                                </a>
+                                <a href="@Url.Action("ConfirmDelete", "Home", new {id = souvenir.Id})">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                                </a>
+                            }
                         </div>
-                    }
 
+                    </div>
+                </div>
 
+            </div>
+        }
         @if (User.IsInRole("ADMIN"))
         {
             <div class="row justify-content-center my-5">
@@ -56,6 +51,5 @@
                 </div>
             </div>
         }
-        
     </div>
 </div>
