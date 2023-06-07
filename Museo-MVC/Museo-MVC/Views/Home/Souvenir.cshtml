@@ -1,52 +1,59 @@
 ﻿@model List<Souvenir>
 
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-12 d-block justify-content-center">
-            <h3>I NOSTRI SOUVENIR</h3>
+<div class="container mt-5 justify-content-between align-content-between">
+    <div class="row justify-content-center my-5 ">
+        <div class="col-6 d-block text-center ">
+            <h1 class="card_text" >I NOSTRI SOUVENIR</h1>
         </div>
     </div>
-    @if(User.IsInRole("ADMIN"))
-    {
-        <div class="row">
-            <div class="col-12">
-                <a class="btn btn-dark" href="@Url.Action("Create", "Home")">
-                    Inserisci un nuovo Souvenir
-                </a>
-            </div>
-        </div>
-    }
-    <div class="row my-3">
-        <div class="col-12">
+    
+    <div class="row my-5 justify-content-center">
+        
 
            
                     @foreach (Souvenir souvenir in Model)
                     {
-                        <div class="card" style="width: 18rem;">
-                            <img src="@souvenir.Img" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">@souvenir.Name</h5>
-                            
-                                <p class="card-text">@souvenir.Price</p>
-                                <a href="@Url.Action("Details", "Home", new { id = souvenir.Id })" class="btn btn-outline-primary mb-2">More Information</a>
-                                <div>
-                                    @if (User.IsInRole("ADMIN"))
-                                    {
-                                        <a class="mt-2" href="@Url.Action("Update", "Home", new {id = souvenir.Id})">
-                                    <button type="button" class="btn btn-outline-warning">Modifica</button>
-                                        </a>
-                                        <form asp-controller="Home" asp-action="Delete" asp-route-id="@souvenir.Id" method="post">
-                                            @Html.AntiForgeryToken()
-                                            <a type="submit" class="mt-2">
-                                        <button type="button" class="btn btn-outline-danger">Elimina</button>
+                        <div class="col-4 justify-content-center ">
+
+                            <div class="card card_border" >
+                                <img src="@souvenir.Img" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">@souvenir.Name</h5>
+
+                                    <p class="card-text card_text">@souvenir.Price</p>
+                                    <a href="@Url.Action("Details", "Home", new { id = souvenir.Id })" class="btn btn-light btn-outline-primary mb-2">More Information</a>
+                                    <div>
+                                        @if (User.IsInRole("ADMIN"))
+                                        {
+                                            <a class="mt-2" href="@Url.Action("Update", "Home", new {id = souvenir.Id})">
+                                    <button type="button" class="btn btn-light btn-outline-warning">Modifica</button>
                                             </a>
-                                        </form>
-                                    }
+                                            <form asp-controller="Home" asp-action="Delete" asp-route-id="@souvenir.Id" method="post">
+                                                @Html.AntiForgeryToken()
+                                                <a type="submit" class=" mt-2">
+                                        <button type="button" class="btn btn-light btn-outline-danger">Elimina</button>
+                                                </a>
+                                            </form>
+                                        }
+                                    </div>
+
                                 </div>
-                               
                             </div>
-                        </div>    
+
+                        </div>
                     }
-        </div>
+
+
+        @if (User.IsInRole("ADMIN"))
+        {
+            <div class="row justify-content-center my-5">
+                <div class="col-6 text-center">
+                    <a class="btn btn-dark" href="@Url.Action("Create", "Home")">
+                        Inserisci un nuovo Souvenir
+                    </a>
+                </div>
+            </div>
+        }
+        
     </div>
 </div>
