@@ -16,6 +16,7 @@ namespace Museo_MVC.Controllers
             _logger = logger;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             
