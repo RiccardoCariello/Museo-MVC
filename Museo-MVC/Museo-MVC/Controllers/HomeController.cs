@@ -84,7 +84,8 @@ namespace Museo_MVC.Controllers
         {
             using(MuseoContext db = new MuseoContext())
             {
-                List<Category> souvenirCategories = new List<Category>();
+                List<Category> souvenirCategories = db.Categories.ToList();
+                //List<Category> souvenirCategories = new List<Category>();
                 SouvenirListCategory modelForView = new SouvenirListCategory();
                 modelForView.Souvenirs = new Souvenir();
                 modelForView.Categories = souvenirCategories;
