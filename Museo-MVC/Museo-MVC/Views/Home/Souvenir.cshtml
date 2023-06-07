@@ -21,17 +21,17 @@
                                     <h5 class="card-title">@souvenir.Name</h5>
 
                                     <p class="card-text card_text">@souvenir.Price</p>
-                                    <a href="@Url.Action("Details", "Home", new { id = souvenir.Id })" class="btn btn-outline-primary mb-2">More Information</a>
+                                    <a href="@Url.Action("Details", "Home", new { id = souvenir.Id })" class="btn btn-light btn-outline-primary mb-2">More Information</a>
                                     <div>
                                         @if (User.IsInRole("ADMIN"))
                                         {
                                             <a class="mt-2" href="@Url.Action("Update", "Home", new {id = souvenir.Id})">
-                                                <button type="button" class="btn btn-outline-warning">Modifica</button>
+                                    <button type="button" class="btn btn-light btn-outline-warning">Modifica</button>
                                             </a>
                                             <form asp-controller="Home" asp-action="Delete" asp-route-id="@souvenir.Id" method="post">
                                                 @Html.AntiForgeryToken()
                                                 <a type="submit" class=" mt-2">
-                                                 <button type="button" class="btn btn-outline-danger">Elimina</button>
+                                        <button type="button" class="btn btn-light btn-outline-danger">Elimina</button>
                                                 </a>
                                             </form>
                                         }
