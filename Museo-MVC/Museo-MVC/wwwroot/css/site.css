@@ -21,3 +21,11 @@ body {
 .bg-navbar{
     background-color: #125B50
 }
+
+.landing {
+    background-image: url('../img/olha-maliar.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    /* Altri stili per l'elemento di sfondo, ad esempio altezza e larghezza */
+}
