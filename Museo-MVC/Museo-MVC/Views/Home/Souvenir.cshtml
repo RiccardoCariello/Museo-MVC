@@ -33,9 +33,9 @@
                                             </a>
                                             <form asp-controller="Home" asp-action="Delete" asp-route-id="@souvenir.Id" method="post">
                                                 @Html.AntiForgeryToken()
-                                                <a type="submit" >
-                                                    <button type="button" class="btn btn-light btn-outline-danger mx-2">Elimina</button>
-                                                </a>
+                                                
+                                                    <button type="submit" class="btn btn-light btn-outline-danger mx-2">Elimina</button>
+                                               
                                             </form>
                                         }
                                     </div>

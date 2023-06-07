@@ -188,7 +188,7 @@ namespace Museo_MVC.Controllers
                     db.Remove(souvenirToDelete);
                     db.SaveChanges();
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Souvenir");
 
                 }
                 else
