@@ -31,12 +31,9 @@
                                             <a  href="@Url.Action("Update", "Home", new {id = souvenir.Id})">
                                                 <button type="button" class="btn btn-light btn-outline-warning mx-2">Modifica</button>
                                             </a>
-                                            <form asp-controller="Home" asp-action="Delete" asp-route-id="@souvenir.Id" method="post">
-                                                @Html.AntiForgeryToken()
-                                                
-                                                    <button type="submit" class="btn btn-light btn-outline-danger mx-2">Elimina</button>
-                                               
-                                            </form>
+                                            <a href="@Url.Action("ConfirmDelete", "Home", new {id = souvenir.Id})">
+                                                <button type="button" class="btn btn-light btn-outline-danger mx-2">Elimina</button>
+                                            </a>
                                         }
                                     </div>
 

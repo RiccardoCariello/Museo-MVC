@@ -1,0 +1,37 @@
+﻿@model Souvenir
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-4">
+
+            <div class="card text-center">
+                <div class="card-header">
+                    <h2>@Model.Name</h2>
+                </div>
+
+                <img src="@Model.Img" class="card-img" alt="@Model.Description">
+
+
+                <div class="card-body">
+                    <h5 class="card-title">@Model.Name</h5>
+                    <p class="card-text">@Model.Description</p>
+
+
+                </div>
+                <div class="card-footer text-body-secondary justify-content-around">
+                    <p>
+                        <strong>Prezzo:</strong>
+                        @Model.Price &#8364;
+                    </p>
+                    <a href="@Url.Action("Souvenir", "Home", new {id = Model.Id})" class="btn btn-light btn-outline-warning mx-2">Annulla</a>
+                    <form asp-controller="Home" asp-action="Delete" asp-route-id="@Model.Id" method="post">
+                        @Html.AntiForgeryToken()
+                        <a type="submit">
+                            <button type="button" class="btn btn-light btn-outline-danger mx-2">Elimina Definitivamente</button>
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
