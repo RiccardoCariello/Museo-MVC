@@ -8,19 +8,16 @@
     </div>
     
     <div class="row my-5 justify-content-center">
-        
+        @foreach (Souvenir souvenir in Model)
+        {
+            <div class="col-4 justify-content-center ">
 
-           
-                    @foreach (Souvenir souvenir in Model)
-                    {
-                        <div class="col-4 justify-content-center ">
+                <div class="card card_border" >
+                    <img src="@souvenir.Img" class="card-img-top" alt="Foto Souvenir">
+                    <div class="card-body">
+                        <h5 class="card-title">@souvenir.Name</h5>
 
-                            <div class="card card_border" >
-                                <img src="@souvenir.Img" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">@souvenir.Name</h5>
-
-                                    <p class="card-text card_text">@souvenir.Price &#8364;</p>
+                        <p class="card-text card_text">@souvenir.Price &#8364;</p>
 
                                     <div class="d-flex  justify-content-around">
 
@@ -50,13 +47,11 @@
                                         }
                                     </div>
 
-                                </div>
-                            </div>
+                    </div>
+                </div>
 
-                        </div>
-                    }
-
-
+            </div>
+        }
         @if (User.IsInRole("ADMIN"))
         {
             <div class="row justify-content-center my-5">
@@ -67,6 +62,5 @@
                 </div>
             </div>
         }
-        
     </div>
 </div>
