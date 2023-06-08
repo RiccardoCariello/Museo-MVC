@@ -20,17 +20,17 @@ namespace Museo_MVC.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            
-                
-                return View();
-            
+
+
+            return View();
+
 
         }
-        
+        // ACTIONS PER LA VISUALIZZAZIONE COMPLETA DEI SOUVENIR 
         [HttpGet]
         public IActionResult Souvenir()
         {
-            using(MuseoContext db = new MuseoContext())
+            using (MuseoContext db = new MuseoContext())
             {
                 List<Souvenir>? souvenirs = db.Souvenirs.ToList();
                 if (souvenirs != null)
@@ -102,12 +102,12 @@ namespace Museo_MVC.Controllers
 
         }
 
-        // ACTIONS PER LA CREAZIONE DI UN SOUVENIR
+        // ACTIONS PER LA CREAZIONE DI UN SOUVENIR GET
         [Authorize(Roles = "ADMIN")]
         [HttpGet]
         public IActionResult Create()
         {
-            using(MuseoContext db = new MuseoContext())
+            using (MuseoContext db = new MuseoContext())
             {
                 List<Category> souvenirCategories = db.Categories.ToList();
                 //List<Category> souvenirCategories = new List<Category>();
@@ -118,6 +118,7 @@ namespace Museo_MVC.Controllers
                 return View(modelForView);
             }
         }
+        // ACTIONS PER LA CREAZIONE DI UN SOUVENIR POST
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -125,13 +126,13 @@ namespace Museo_MVC.Controllers
         {
             if (!ModelState.IsValid)
             {
-                using(MuseoContext db = new MuseoContext())
+                using (MuseoContext db = new MuseoContext())
                 {
                     List<Category> souvenirCategories = db.Categories.ToList();
                     newSouvenir.Categories = souvenirCategories;
-					return View("Create", newSouvenir);
-				}
-                
+                    return View("Create", newSouvenir);
+                }
+
             }
 
             using (MuseoContext db = new MuseoContext())
@@ -144,9 +145,9 @@ namespace Museo_MVC.Controllers
 
         }
 
-		// ACTIONS PER LA MODIFICA DI UN SOUVENIR
-		[Authorize(Roles = "ADMIN")]
-		[HttpGet]
+        // ACTIONS PER LA MODIFICA DI UN SOUVENIR
+        [Authorize(Roles = "ADMIN")]
+        [HttpGet]
         public IActionResult Update(int id)
         {
             using (MuseoContext db = new MuseoContext())
@@ -199,8 +200,8 @@ namespace Museo_MVC.Controllers
 
         }
 
-		[Authorize(Roles = "ADMIN")]
-		[HttpPost]
+        [Authorize(Roles = "ADMIN")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)
         {
