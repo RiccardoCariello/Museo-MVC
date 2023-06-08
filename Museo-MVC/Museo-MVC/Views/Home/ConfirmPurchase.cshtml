@@ -1,0 +1,44 @@
+﻿@using Museo_MVC.Models.ModelForViews
+@model SouvenirListCategory
+
+<div class="container">
+	<form asp-controller="Home" asp-action="ConfirmPurchase" metohd="post">
+		<div class="row">
+			<div class="col">
+
+				@Html.AntiForgeryToken()
+				<div class="mb-3">
+					<label asp-for="Acquistis.Name" class="form-label">Nome</label>
+					<input asp-for="Acquistis.Name" type="text" class="form-control" placeholder="Nome..." required>
+					<span asp-validation-for="Acquistis.Name" class="text-danger"></span>
+				</div>
+				<div class="mb-3">
+					<label asp-for="Acquistis.Surname" class="form-label">Cognome</label>
+					<textarea asp-for="Acquistis.Surname" rows="10" class="form-control" placeholder="Cognome..."></textarea>
+					<span asp-validation-for="Acquistis.Surname" class="text-danger"></span>
+				</div>
+				<div class="mb-3">
+					<label asp-for="Acquistis.Email" class="form-label">Email</label>
+					<input asp-for="Acquistis.Email" type="text" class="form-control" placeholder="Descrizione..." required>
+					<span asp-validation-for="Acquistis.Email" class="text-danger"></span>
+				</div>
+				<div class="mb-3">
+					<label asp-for="Acquistis.Cap" class="form-label">Cap</label>
+					<input asp-for="Acquistis.Cap" type="text" class="form-control" placeholder="Prezzo..." required>
+					<span asp-validation-for="Acquistis.Cap" class="text-danger"></span>
+				</div>
+				<div class="mb-3">
+					<label asp-for="Acquistis.Quantity" class="form-label">Quantità</label>
+					<input asp-for="Acquistis.Quantity" type="text" class="form-control" placeholder="Prezzo..." required>
+					<span asp-validation-for="Acquistis.Quantity" class="text-danger"></span>
+				</div>
+				
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<button type="submit" class="btn btn-primary">Aquista</button>
+			</div>
+		</div>
+	</form>
+</div>
