@@ -82,7 +82,13 @@ namespace Museo_MVC.Controllers
 		[Authorize(Roles = "USER")]
 		public IActionResult ConfirmPurchase(int id)
         {
-            return View("ConfirmPurchase");
+            using(MuseoContext db = new MuseoContext())
+            {
+                SouvenirListCategory modelForView = new SouvenirListCategory();
+                modelForView.Acquistis = new Acquisti();
+                modelForView.Souvenirs = db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault();
+				return View("ConfirmPurchase");
+			}
         }
 
         [HttpPost]
