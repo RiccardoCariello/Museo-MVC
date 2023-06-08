@@ -27,6 +27,10 @@ body {
     color: #FFC26F;
 }
 
+.navbar-over{
+    overflow: hidden
+}
+
 .landing {
     background-image: url('../img/olha-maliar.jpg');
     background-repeat: no-repeat;
