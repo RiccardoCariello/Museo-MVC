@@ -48,3 +48,8 @@ body {
 .button_color {
     color: #FFC26F;
 }
+
+
+.bg_opacity {
+    background-color: rgba(255, 194, 111, 0.5);
+}
