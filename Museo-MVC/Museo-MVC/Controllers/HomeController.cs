@@ -78,10 +78,27 @@ namespace Museo_MVC.Controllers
         }
 
         //PAGINA CONFERTMA ACQUISTO
-        public IActionResult ConfirmPurchase(int id)
+        [HttpGet]
+		[Authorize(Roles = "USER")]
+		public IActionResult ConfirmPurchase(int id)
         {
             return View("ConfirmPurchase");
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult ConfirmPurchase (Acquisti acquisto)
+        {
+            if (ModelState.IsValid)
+            {
+                using(MuseoContext db = new MuseoContext())
+                {
+                    db.Acquistis.Add(acquisto);
+                    db.SaveChanges();
+                }
+            }
+			return RedirectToAction("ConfirmPurchase");
+		}
 
         //PAGINA CONFERMA ELIMINAZIONE
         public IActionResult ConfirmDelete(int id)
@@ -225,15 +242,4 @@ namespace Museo_MVC.Controllers
             }
         }
     }
-
-
-
-
-
-
-
-
-
-
-
 }
