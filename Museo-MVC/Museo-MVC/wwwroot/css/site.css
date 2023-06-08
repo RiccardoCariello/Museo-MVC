@@ -59,3 +59,8 @@ body {
 .button_color {
     color: #FFC26F;
 }
+
+
+.bg_opacity {
+    background-color: #FFC26F80;
+}
