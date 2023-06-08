@@ -11,7 +11,7 @@ namespace Museo_MVC.Models
         
         public int Id { get; set; }
 
-        DateTime Date { get; set; }
+        public DateTime Date { get; set; }
 
         public string Name { get; set; }
 
