@@ -97,7 +97,7 @@ namespace Museo_MVC.Controllers
                     db.SaveChanges();
                 }
             }
-			return RedirectToAction("ConfirmPurchase");
+			return RedirectToAction("Souvenir");
 		}
 
         //PAGINA CONFERMA ELIMINAZIONE
