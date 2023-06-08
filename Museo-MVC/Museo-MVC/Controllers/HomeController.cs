@@ -77,6 +77,12 @@ namespace Museo_MVC.Controllers
 
         }
 
+        //PAGINA CONFERTMA ACQUISTO
+        public IActionResult ConfirmPurchase(int id)
+        {
+            return View("ConfirmPurchase");
+        }
+
         //PAGINA CONFERMA ELIMINAZIONE
         public IActionResult ConfirmDelete(int id)
         {
@@ -217,9 +223,6 @@ namespace Museo_MVC.Controllers
                 }
             }
         }
-
-
-
     }
 
 
