@@ -29,7 +29,7 @@
 					<span asp-validation-for="Souvenirs.Price" class="text-danger"></span>
 				</div>
 				<div class="mb-3">
-					<strong>Categoria:</strong>
+					<p>Categoria:</p>
 					<select asp-for="Souvenirs.CategoryId" title="SouvenirCategory" rows="10" class="d-block w-100">
 						<option value=""></option>
 						@foreach (Category category in Model.Categories ?? new List<Category>())

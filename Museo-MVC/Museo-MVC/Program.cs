@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Museo_MVC.DataBase;
 var builder = WebApplication.CreateBuilder(args);
 
+//var connectionString = builder.Configuration.GetConnectionString("MuseoContextConnection") ?? throw new InvalidOperationException("Connection string 'MuseoContextConnection' not found.");
+
 
 
 builder.Services.AddDbContext<MuseoContext>();

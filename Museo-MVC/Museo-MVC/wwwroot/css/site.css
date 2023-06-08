@@ -14,16 +14,17 @@ html {
 }
 
 body {
+  background-color: #F9E0BB;
   margin-bottom: 60px;
 }
 
 
 .bg-navbar {
-    background-color: #2E4F4F;
+    background-color: #884A39;
 }
 
 .text-navbar {
-    color: #0E8388;
+    color: #FFC26F;
 }
 
 .landing {
@@ -36,10 +37,19 @@ body {
 
 
 .card_border {
-    border: 1px solid #CBE4DE;
-    background-color: #0E8388;
+    border: 1px solid #FFC26F;
+    background-color: #C38154;
 }
 
 .card_text {
-    text-decoration-color: #CBE4DE;
+    text-decoration-color: #FFC26F;
+}
+
+.button_color {
+    color: #FFC26F;
+}
+
+
+.bg_opacity {
+    background-color: #FFC26F80;
 }
