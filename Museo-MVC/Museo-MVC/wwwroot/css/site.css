@@ -25,6 +25,11 @@ body {
 
 .text-navbar {
     color: #FFC26F;
+    
+}
+
+.text_decoration {
+    text-decoration-color: #FFC26F;
 }
 
 .navbar-over {

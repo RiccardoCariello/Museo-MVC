@@ -77,7 +77,13 @@ namespace Museo_MVC.Controllers
 
         }
 
-        //PAGINA CONFERMA DELL'ELIMINAZIONE
+        //PAGINA CONFERTMA ACQUISTO
+        public IActionResult ConfirmPurchase(int id)
+        {
+            return View("ConfirmPurchase");
+        }
+
+        //PAGINA CONFERMA ELIMINAZIONE
         public IActionResult ConfirmDelete(int id)
         {
             using (MuseoContext db = new MuseoContext())
@@ -218,9 +224,6 @@ namespace Museo_MVC.Controllers
                 }
             }
         }
-
-
-
     }
 
 
