@@ -17,6 +17,8 @@ namespace Museo_MVC.Models
 
         public int? CategoryId { get; set; }
         public Category? Category { get; set; }
+
+		public List<Acquisti> AcquistiList { get; set; }
         
 
         public Souvenir() { }
@@ -26,6 +28,7 @@ namespace Museo_MVC.Models
 			Name = name;
 			Description = description;
 			Price = price;
+			AcquistiList = new List<Acquisti>();
 		}
 	}
 }

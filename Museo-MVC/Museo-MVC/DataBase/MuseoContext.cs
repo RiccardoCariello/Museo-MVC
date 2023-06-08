@@ -15,7 +15,7 @@ namespace Museo_MVC.DataBase
 
         public DbSet<Category> Categories { get; set; }
 
-
+        public DbSet<Acquisti> Acquistis { get; set; }
 
 
 

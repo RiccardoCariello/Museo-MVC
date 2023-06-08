@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Museo_MVC.DataBase;
 
@@ -11,9 +12,11 @@ using Museo_MVC.DataBase;
 namespace Museo_MVC.Migrations
 {
     [DbContext(typeof(MuseoContext))]
-    partial class MuseoContextModelSnapshot : ModelSnapshot
+    [Migration("20230608083710_NewTablesAcquistis")]
+    partial class NewTablesAcquistis
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -220,37 +223,6 @@ namespace Museo_MVC.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Museo_MVC.Models.Acquisti", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Cap")
-                        .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("SouvenirId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SouvenirId");
-
-                    b.ToTable("Acquistis");
-                });
-
             modelBuilder.Entity("Museo_MVC.Models.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -353,15 +325,6 @@ namespace Museo_MVC.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Museo_MVC.Models.Acquisti", b =>
-                {
-                    b.HasOne("Museo_MVC.Models.Souvenir", "Souvenir")
-                        .WithMany("AcquistiList")
-                        .HasForeignKey("SouvenirId");
-
-                    b.Navigation("Souvenir");
-                });
-
             modelBuilder.Entity("Museo_MVC.Models.Souvenir", b =>
                 {
                     b.HasOne("Museo_MVC.Models.Category", "Category")
@@ -374,11 +337,6 @@ namespace Museo_MVC.Migrations
             modelBuilder.Entity("Museo_MVC.Models.Category", b =>
                 {
                     b.Navigation("SouvenirList");
-                });
-
-            modelBuilder.Entity("Museo_MVC.Models.Souvenir", b =>
-                {
-                    b.Navigation("AcquistiList");
                 });
 #pragma warning restore 612, 618
         }
