@@ -141,26 +141,24 @@ namespace Museo_MVC.Controllers
                 return View(modelForView);
             }
         }
+        
         // ACTIONS PER LA CREAZIONE DI UN SOUVENIR POST
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(SouvenirListCategory newSouvenir)
+        public IActionResult Create(Souvenir newSouvenir)
         {
             if (!ModelState.IsValid)
             {
                 using (MuseoContext db = new MuseoContext())
                 {
-                    List<Category> souvenirCategories = db.Categories.ToList();
-                    newSouvenir.Categories = souvenirCategories;
-                    return View("Create", newSouvenir);
+                    return Problem("L'oggetto non è stato creato!");
                 }
 
             }
 
             using (MuseoContext db = new MuseoContext())
             {
-                db.Souvenirs.Add(newSouvenir.Souvenirs);
+                db.Souvenirs.Add(newSouvenir);
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
