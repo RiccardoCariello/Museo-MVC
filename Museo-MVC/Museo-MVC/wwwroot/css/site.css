@@ -70,3 +70,7 @@ body {
 .bg_opacity {
     background-color: #FFC26F80;
 }
+
+* {
+    font-family: 'Pacifico', cursive;
+}
