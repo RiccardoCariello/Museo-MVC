@@ -63,7 +63,7 @@ body {
 .souvenir_bg {
     background-image: url('../img/adrianna-geo.jpg');
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     height: 100vh;
     /* Altri stili per l'elemento di sfondo, ad esempio altezza e larghezza */
     display: flex;
