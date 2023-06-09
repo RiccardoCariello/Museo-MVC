@@ -8,9 +8,9 @@
 
 				@Html.AntiForgeryToken()
 				<div class="mb-3">
-					<label asp-for="Acquistis.Name" class="form-label">Nome</label>
-					<input asp-for="Acquistis.Name" type="text" class="form-control" placeholder="Nome..." required>
-					<span asp-validation-for="Acquistis.Name" class="text-danger"></span>
+					<label asp-for="@Model.Acquistis.Name" class="form-label">Nome</label>
+					<input asp-for="@Model.Acquistis.Name" type="text" class="form-control" placeholder="Nome..." required>
+					<span asp-validation-for="@Model.Acquistis.Name" class="text-danger"></span>
 				</div>
 				<div class="mb-3">
 					<label asp-for="Acquistis.Surname" class="form-label">Cognome</label>
