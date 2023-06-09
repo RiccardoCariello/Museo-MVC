@@ -25,7 +25,8 @@ body {
 
 .text-navbar {
     color: #FFC26F;
-    
+    text-decoration: rgba(255, 194, 111);
+    text-decoration: #FFC26F;
 }
 
 .text_decoration {
@@ -60,6 +61,7 @@ body {
 .card_border {
     border: 1px solid #FFC26F;
     background-color: #C38154;
+    
 }
 
 .card_text {
