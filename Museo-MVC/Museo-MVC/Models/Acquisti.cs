@@ -31,7 +31,8 @@ namespace Museo_MVC.Models
 
         public Acquisti(string name , string surname ,int quantity, string email, string cap)
         {
-            Date = DateTime.UtcNow;
+            //Date = DateTime.Now.ToString("dd/MM/yyyy hh:mm");
+            Date = DateTime.Now;
             Name = name;
             Surname = surname;
             Quantity = quantity;
