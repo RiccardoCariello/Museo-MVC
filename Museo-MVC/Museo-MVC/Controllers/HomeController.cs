@@ -104,6 +104,7 @@ namespace Museo_MVC.Controllers
 
                     //acquisto.Acquistis.Souvenir = db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault();
                     acquisto.Acquistis.SouvenirId = id;
+                    acquisto.Acquistis.Date = DateTime.UtcNow;
                     db.Acquistis.Add(acquisto.Acquistis);
                     db.SaveChanges();
                 }
