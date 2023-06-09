@@ -84,21 +84,26 @@ namespace Museo_MVC.Controllers
         {
             using(MuseoContext db = new MuseoContext())
             {
-                SouvenirListCategory modelForView = new SouvenirListCategory();
-                modelForView.Acquistis = new Acquisti();
-                modelForView.Souvenirs = db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault();
+				//SouvenirListCategory modelForView = new SouvenirListCategory();
+				//SouvenirListAcquistis modelForView = new SouvenirListAcquistis();
+				//modelForView.Acquistis = new Acquisti();
+				//modelForView.Souvenirs = db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault();
+				//modelForView.SouvenirsList.Add(db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault());
 				return View("ConfirmPurchase");
 			}
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult ConfirmPurchase (SouvenirListAcquistis acquisto)
+        public IActionResult ConfirmPurchase (int id, SouvenirListAcquistis acquisto  )
         {
             if (ModelState.IsValid)
             {
                 using(MuseoContext db = new MuseoContext())
                 {
+
+                    //acquisto.Acquistis.Souvenir = db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault();
+                    acquisto.Acquistis.SouvenirId = id;
                     db.Acquistis.Add(acquisto.Acquistis);
                     db.SaveChanges();
                 }
