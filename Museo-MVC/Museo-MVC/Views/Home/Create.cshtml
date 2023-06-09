@@ -1,5 +1,5 @@
-﻿@using Museo_MVC.Models
-@model Souvenir;
+﻿@using Museo_MVC.Models.ModelForViews
+@model SouvenirListCategory;
 
 <h1>Aggiungi qui il tuo Souvenir</h1>
 <div class="container">
@@ -9,28 +9,28 @@
 
 				@Html.AntiForgeryToken()
 				<div class="mb-3">
-					<label asp-for="Img" class="form-label">Immagine</label>
-					<input asp-for="Img" type="text" class="form-control" placeholder="URL/Percorso..." required>
-					<span asp-validation-for="Img" class="text-danger"></span>
+					<label asp-for="Souvenirs.Img" class="form-label">Immagine</label>
+					<input asp-for="Souvenirs.Img" type="text" class="form-control" placeholder="URL/Percorso..." required>
+					<span asp-validation-for="Souvenirs.Img" class="text-danger"></span>
 				</div>
 				<div class="mb-3">
-					<label asp-for="Name" class="form-label">Nome</label>
-					<textarea asp-for="Name" rows="10" class="form-control" placeholder="Nome..."></textarea>
-					<span asp-validation-for="Name" class="text-danger"></span>
+					<label asp-for="Souvenirs.Name" class="form-label">Nome</label>
+					<textarea asp-for="Souvenirs.Name" rows="10" class="form-control" placeholder="Nome..."></textarea>
+					<span asp-validation-for="Souvenirs.Name" class="text-danger"></span>
 				</div>
 				<div class="mb-3">
-					<label asp-for="Description" class="form-label">Descrizione</label>
-					<input asp-for="Description" type="text" class="form-control" placeholder="Descrizione..." required>
-					<span asp-validation-for="Description" class="text-danger"></span>
+					<label asp-for="Souvenirs.Description" class="form-label">Descrizione</label>
+					<input asp-for="Souvenirs.Description" type="text" class="form-control" placeholder="Descrizione..." required>
+					<span asp-validation-for="Souvenirs.Description" class="text-danger"></span>
 				</div>
 				<div class="mb-3">
-					<label asp-for="Price" class="form-label">Prezzo</label>
-					<input asp-for="Price" type="text" class="form-control" placeholder="Prezzo..." required>
-					<span asp-validation-for="Price" class="text-danger"></span>
+					<label asp-for="Souvenirs.Price" class="form-label">Prezzo</label>
+					<input asp-for="Souvenirs.Price" type="text" class="form-control" placeholder="Prezzo..." required>
+					<span asp-validation-for="Souvenirs.Price" class="text-danger"></span>
 				</div>
 				<div class="mb-3">
 					<p>Categoria:</p>
-					<select asp-for="CategoryId" title="SouvenirCategory" rows="10" class="d-block w-100">
+					<select asp-for="Souvenirs.CategoryId" title="SouvenirCategory" rows="10" class="d-block w-100">
 						<option value=""></option>
 						@foreach (Category category in Model.Categories ?? new List<Category>())
 						{

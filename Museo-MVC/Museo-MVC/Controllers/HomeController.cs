@@ -93,13 +93,13 @@ namespace Museo_MVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult ConfirmPurchase (Acquisti acquisto)
+        public IActionResult ConfirmPurchase (SouvenirListAcquistis acquisto)
         {
             if (ModelState.IsValid)
             {
                 using(MuseoContext db = new MuseoContext())
                 {
-                    db.Acquistis.Add(acquisto);
+                    db.Acquistis.Add(acquisto.Acquistis);
                     db.SaveChanges();
                 }
             }
@@ -145,7 +145,7 @@ namespace Museo_MVC.Controllers
         // ACTIONS PER LA CREAZIONE DI UN SOUVENIR POST
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Souvenir newSouvenir)
+        public IActionResult Create(SouvenirListCategory newSouvenir)
         {
             if (!ModelState.IsValid)
             {
@@ -158,7 +158,7 @@ namespace Museo_MVC.Controllers
 
             using (MuseoContext db = new MuseoContext())
             {
-                db.Souvenirs.Add(newSouvenir);
+                db.Souvenirs.Add(newSouvenir.Souvenirs);
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
