@@ -208,14 +208,14 @@ namespace Museo_MVC.Controllers
 
                 if (souvenirToModify != null)
                 {
-
-                    souvenirToModify.Img = souvenirToModify.Img;
-                    souvenirToModify.Name = souvenirToModify.Name;
-                    souvenirToModify.Description = souvenirToModify.Description;
-                    souvenirToModify.Price = souvenirToModify.Price;
+                    
+                    souvenirToModify.Img = modifiedSouvenir.Img;
+                    souvenirToModify.Name = modifiedSouvenir.Name;
+                    souvenirToModify.Description = modifiedSouvenir.Description;
+                    souvenirToModify.Price = modifiedSouvenir.Price;
 
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Souvenir");
 
                 }
                 else

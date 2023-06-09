@@ -2,11 +2,11 @@
 
 <div class="container">
     <h2 class="mb-3">Modifica Il Souvenir</h2>
-    <form asp-controller="Souvenir" asp-action="Update" asp-route-id="@Model.Id" method="post">
+    <form asp-controller="Home" asp-action="Update" asp-route-id="@Model.Id" method="post">
         @Html.AntiForgeryToken()
         <div class="mb-3">
-            <label asp-for="Id" class="form-label">Id Souvenir</label>
-            <input asp-for="Id" type="text" class="form-control" readonly>
+            <label asp-for="Price" class="form-label">Price</label>
+            <input asp-for="Price" type="text" class="form-control" required>
         </div>
         <div class="mb-3">
             <label asp-for="Name" class="form-label">Titolo</label>
