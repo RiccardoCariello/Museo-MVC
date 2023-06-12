@@ -260,6 +260,7 @@ namespace Museo_MVC.Controllers
             {
                 
                 
+                
                 return View("ConfirmOrder");
             }
         }
@@ -290,7 +291,7 @@ namespace Museo_MVC.Controllers
                     newOrder.Quantity = ordine.Orders.Quantity;
                     newOrder.SouvenirId = id;
                     newOrder.Name = ordine.Orders.Name;
-
+                    ordine.Souvenirs.Quantity = ordine.Souvenirs.Quantity + newOrder.Quantity;
 
                     if (newOrder != null)
                     {
