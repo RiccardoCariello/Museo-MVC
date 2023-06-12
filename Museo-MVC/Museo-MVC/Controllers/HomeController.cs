@@ -1,11 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Museo_MVC.DataBase;
-using Museo_MVC.Models;
-using Museo_MVC.Models.ModelForViews;
-using System.Diagnostics;
-
-namespace Museo_MVC.Controllers
+﻿namespace Museo_MVC.Controllers
 {
     //[Authorize(Roles = "ADMIN,USER")]
     public class HomeController : Controller
@@ -79,27 +72,27 @@ namespace Museo_MVC.Controllers
 
         //PAGINA CONFERTMA ACQUISTO
         [HttpGet]
-		[Authorize(Roles = "USER")]
-		public IActionResult ConfirmPurchase(int id)
+        [Authorize(Roles = "USER")]
+        public IActionResult ConfirmPurchase(int id)
         {
-            using(MuseoContext db = new MuseoContext())
+            using (MuseoContext db = new MuseoContext())
             {
-				//SouvenirListCategory modelForView = new SouvenirListCategory();
-				//SouvenirListAcquistis modelForView = new SouvenirListAcquistis();
-				//modelForView.Acquistis = new Acquisti();
-				//modelForView.Souvenirs = db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault();
-				//modelForView.SouvenirsList.Add(db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault());
-				return View("ConfirmPurchase");
-			}
+                //SouvenirListCategory modelForView = new SouvenirListCategory();
+                //SouvenirListAcquistis modelForView = new SouvenirListAcquistis();
+                //modelForView.Acquistis = new Acquisti();
+                //modelForView.Souvenirs = db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault();
+                //modelForView.SouvenirsList.Add(db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault());
+                return View("ConfirmPurchase");
+            }
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult ConfirmPurchase (int id, SouvenirListAcquistis acquisto  )
+        public IActionResult ConfirmPurchase(int id, SouvenirListAcquistis acquisto)
         {
             if (ModelState.IsValid)
             {
-                using(MuseoContext db = new MuseoContext())
+                using (MuseoContext db = new MuseoContext())
                 {
 
                     //acquisto.Acquistis.Souvenir = db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault();
@@ -109,8 +102,8 @@ namespace Museo_MVC.Controllers
                     db.SaveChanges();
                 }
             }
-			return RedirectToAction("Souvenir");
-		}
+            return RedirectToAction("Souvenir");
+        }
 
         //PAGINA CONFERMA ELIMINAZIONE
         public IActionResult ConfirmDelete(int id)
@@ -147,7 +140,7 @@ namespace Museo_MVC.Controllers
                 return View(modelForView);
             }
         }
-        
+
         // ACTIONS PER LA CREAZIONE DI UN SOUVENIR POST
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -209,7 +202,7 @@ namespace Museo_MVC.Controllers
 
                 if (souvenirToModify != null)
                 {
-                    
+
                     souvenirToModify.Img = modifiedSouvenir.Img;
                     souvenirToModify.Name = modifiedSouvenir.Name;
                     souvenirToModify.Description = modifiedSouvenir.Description;
@@ -254,18 +247,20 @@ namespace Museo_MVC.Controllers
 
         [Authorize(Roles = "ADMIN")]
         [HttpGet]
-        
+
         public IActionResult ConfirmOrder(int id)
         {
-            return View("ConfirmOrder");
+            using (MuseoContext db = new MuseoContext())
+            {
+                return View("ConfirmOrder");
+            }
         }
 
-
-        
         [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult ConfirmOrder(int id , SouvenirListOrders ordine )
+        public IActionResult ConfirmOrder(int id, Ordini ordine)
+        public IActionResult ConfirmOrder(int id, SouvenirListOrders ordine)
         {
 
             using (MuseoContext db = new MuseoContext())
@@ -276,11 +271,11 @@ namespace Museo_MVC.Controllers
                 }
                 else
                 {
-                    Souvenir? souvenirToOrder = db.Souvenirs.Where( souvenir => souvenir.Id == id ).FirstOrDefault();
+                    Souvenir? souvenirToOrder = db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault();
 
-                    
 
-                    if( souvenirToOrder != null)
+
+                    if (souvenirToOrder != null)
                     {
                         db.Ordini.Add(ordine.Orders);
 
@@ -296,7 +291,7 @@ namespace Museo_MVC.Controllers
                     }
                 }
 
-               
+
 
 
 
@@ -305,6 +300,6 @@ namespace Museo_MVC.Controllers
 
 
         }
-        
+
     }
 }
