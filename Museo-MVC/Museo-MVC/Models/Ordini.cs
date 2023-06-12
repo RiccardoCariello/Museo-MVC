@@ -4,7 +4,7 @@ namespace Museo_MVC.Models
 {
     public class Ordini
     {
-        [Key]
+        
         public int Id {get; set;}
 
         public int AdminId { get; set;}
@@ -28,7 +28,7 @@ namespace Museo_MVC.Models
         {
             
             Name = name;
-            Surname = surname;
+            
             Date = DateTime.Now;
             SouvenirId = souvenirId;
             SouvenirName = souvenirName;
