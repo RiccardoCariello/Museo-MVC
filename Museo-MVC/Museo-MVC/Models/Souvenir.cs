@@ -7,8 +7,8 @@ namespace Museo_MVC.Models
 	{
 		[Key]
 		public int Id { get; set; }
-		
-		
+
+
 		public string Img { get; set; }
 		[MaxLength(20)]
 		public string Name { get; set; }
@@ -16,10 +16,14 @@ namespace Museo_MVC.Models
 		public float Price { get; set; }
 
 		public int? Quantity { get; set; }
-        public int? CategoryId { get; set; }
-        public Category? Category { get; set; }
+		public int? CategoryId { get; set; }
+		public Category? Category { get; set; }
 
 		public List<Acquisti>? AcquistiList { get; set; }
+
+		
+
+		public List<Ordini> OrdiniList { get; set; }
         
 
         public Souvenir() { }
@@ -31,6 +35,8 @@ namespace Museo_MVC.Models
 			Price = price;
 			AcquistiList = new List<Acquisti>();
 			Quantity = quantity;
+
+			OrdiniList = new List<Ordini>();
 		}
 	}
 }

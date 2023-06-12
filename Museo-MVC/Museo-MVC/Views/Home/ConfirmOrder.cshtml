@@ -2,7 +2,7 @@
 @model SouvenirListOrders
 
 <div class="container" style="color: #C38154;">
-	<form asp-controller="Home" asp-action="ConfirmOrder" method="post">
+	<form asp-controller="Home" asp-action="ConfirmOrder"  method="post">
 		<div class="row">
 			<div class="col">
 
@@ -24,9 +24,9 @@
 				</div>
 				
 				<div class="mb-3">
-					<label asp-for="Souvenirs.Price" class="form-label">Prezzo</label>
-					<input asp-for="Souvenirs.Price" type="text" class="form-control" placeholder="Prezzo..." required>
-					<span asp-validation-for="Souvenirs.Price" class="text-danger"></span>
+					<label asp-for="Orders.Price" class="form-label">Prezzo</label>
+					<input asp-for="Orders.Price" type="text" class="form-control" placeholder="Prezzo..." readonly>
+					<span asp-validation-for="Orders.Price" class="text-danger"></span>
 				</div>
 			</div>
 		</div>

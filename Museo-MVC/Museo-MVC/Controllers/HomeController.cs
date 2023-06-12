@@ -258,6 +258,8 @@ namespace Museo_MVC.Controllers
         {
             using (MuseoContext db = new MuseoContext())
             {
+                
+                
                 return View("ConfirmOrder");
             }
         }
@@ -277,15 +279,15 @@ namespace Museo_MVC.Controllers
                 }
                 else
                 {
-                    Souvenir? souvenirToOrder = db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault();
+                   ordine.Souvenirs = db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault();
 
 
 
-                    if (souvenirToOrder != null)
+                    if (ordine != null)
                     {
-                        db.Ordini.Add(ordine.Orders);
+                        
 
-                        souvenirToOrder.Quantity += ordine.Orders.Quantity;
+                        db.Ordini.Add(ordine.Orders);
 
                         db.SaveChanges();
                         return View("Souvenir");

@@ -11,7 +11,7 @@ namespace Museo_MVC.Models
         
         public int Id {get; set;}
 
-        public int AdminId { get; set;}
+        public int? AdminId { get; set;}
 
         public string Name { get; set;}
 
@@ -20,11 +20,11 @@ namespace Museo_MVC.Models
 
         public string Fornitore { get; set;}
 
-        public string SouvenirName { get; set; } 
+        public string? SouvenirName { get; set; } 
 
         public int Quantity { get; set;}
 
-        public float Price { get; set;}
+        public float? Price { get; set;}
 
         public int? SouvenirId { get; set; }
 
@@ -32,16 +32,16 @@ namespace Museo_MVC.Models
 
         public Ordini() { }
 
-        public Ordini (string name, string surname, int souvenirId, string souvenirName, int quantity, float price, string fornitore)
+        public Ordini (string name, string surname, int souvenirId, int quantity, float price, string fornitore)
         {
             
             Name = name;
             
             Date = DateTime.Now;
             SouvenirId = souvenirId;
-            SouvenirName = souvenirName;
+            SouvenirName = Souvenir.Name;
             Quantity = quantity;
-            Price = price;
+            Price = Souvenir.Price;
             Fornitore = fornitore;
         }
     }
