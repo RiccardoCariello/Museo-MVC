@@ -232,7 +232,7 @@ namespace Museo_MVC.Controllers
                     souvenirToModify.Name = modifiedSouvenir.Name;
                     souvenirToModify.Description = modifiedSouvenir.Description;
                     souvenirToModify.Price = modifiedSouvenir.Price;
-
+                    souvenirToModify.Quantity = modifiedSouvenir.Quantity;
                     db.SaveChanges();
                     return RedirectToAction("Souvenir");
 

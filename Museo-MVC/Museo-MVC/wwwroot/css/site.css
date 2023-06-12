@@ -73,6 +73,18 @@ body {
     min-height: 100vh;
 }
 
+.CRUD_bg {
+    background-image: url('../img/elizabeth-george-E_evIcvACS8-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    /* Altri stili per l'elemento di sfondo, ad esempio altezza e larghezza */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
 .card_border {
     border: 1px solid #FFC26F;
     background-color: #C38154;
@@ -109,7 +121,7 @@ body {
 
 
 * {
-    font-family: 'Luisitana';
+    font-family: 'EB Garamond', serif;
 }
 
 
