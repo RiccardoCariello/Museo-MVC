@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Museo-MVC/Museo-MVC/Migrations/20230612094828_NewTableOrdiniUmberto.cs
+/Museo-MVC/Museo-MVC/Migrations/MuseoContextModelSnapshot.cs
+*.cs
