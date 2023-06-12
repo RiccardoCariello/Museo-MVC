@@ -116,7 +116,7 @@ namespace Museo_MVC.Controllers
 					else
 					{
 						ModelState.AddModelError("Acquistis.Quantity", "Quantità non disponibile");
-						return View("NomeDellaTuaVista", acquisto);
+						return View("ConfirmPurchase", acquisto);
 					}
 
 
