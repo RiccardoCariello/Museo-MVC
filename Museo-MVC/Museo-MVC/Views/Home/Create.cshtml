@@ -38,6 +38,11 @@
 						}
 					</select>
 				</div>
+				<div class="mb-3">
+					<label asp-for="Souvenirs.Quantity" class="form-label">Quantità</label>
+					<input asp-for="Souvenirs.Quantity" type="text" class="form-control" placeholder="Quantità..." required>
+					<span asp-validation-for="Souvenirs.Quantity" class="text-danger"></span>
+				</div>
 			</div>
 		</div>
 		<div class="row">
