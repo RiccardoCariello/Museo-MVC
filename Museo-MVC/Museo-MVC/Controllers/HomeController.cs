@@ -1,4 +1,11 @@
-﻿namespace Museo_MVC.Controllers
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Museo_MVC.DataBase;
+using Museo_MVC.Models;
+using Museo_MVC.Models.ModelForViews;
+using System.Diagnostics;
+
+namespace Museo_MVC.Controllers
 {
     //[Authorize(Roles = "ADMIN,USER")]
     public class HomeController : Controller
@@ -259,7 +266,7 @@
         [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult ConfirmOrder(int id, Ordini ordine)
+       
         public IActionResult ConfirmOrder(int id, SouvenirListOrders ordine)
         {
 
