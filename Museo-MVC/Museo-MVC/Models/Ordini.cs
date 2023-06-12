@@ -1,4 +1,8 @@
 ﻿using MessagePack;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace Museo_MVC.Models
 {
@@ -14,13 +18,17 @@ namespace Museo_MVC.Models
         
         public DateTime? Date { get; set;}
 
-        public int SouvenirId { get; set;}
+       
 
         public string SouvenirName { get; set; } 
 
         public int Quantity { get; set;}
 
         public float Price { get; set;}
+
+        public int? SouvenirId { get; set; }
+
+        public Souvenir? Souvenir { get; set; }
 
         public Ordini() { }
 

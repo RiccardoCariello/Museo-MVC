@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Museo_MVC.DataBase;
 
@@ -11,9 +12,11 @@ using Museo_MVC.DataBase;
 namespace Museo_MVC.Migrations
 {
     [DbContext(typeof(MuseoContext))]
-    partial class MuseoContextModelSnapshot : ModelSnapshot
+    [Migration("20230612073416_NewTable")]
+    partial class NewTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -302,7 +305,7 @@ namespace Museo_MVC.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SouvenirId")
+                    b.Property<int>("SouvenirId")
                         .HasColumnType("int");
 
                     b.Property<string>("SouvenirName")
@@ -310,8 +313,6 @@ namespace Museo_MVC.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("SouvenirId");
 
                     b.ToTable("Ordini");
                 });
@@ -408,15 +409,6 @@ namespace Museo_MVC.Migrations
                 {
                     b.HasOne("Museo_MVC.Models.Souvenir", "Souvenir")
                         .WithMany("AcquistiList")
-                        .HasForeignKey("SouvenirId");
-
-                    b.Navigation("Souvenir");
-                });
-
-            modelBuilder.Entity("Museo_MVC.Models.Ordini", b =>
-                {
-                    b.HasOne("Museo_MVC.Models.Souvenir", "Souvenir")
-                        .WithMany()
                         .HasForeignKey("SouvenirId");
 
                     b.Navigation("Souvenir");

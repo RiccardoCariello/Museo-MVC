@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Museo_MVC.DataBase;
 
@@ -11,9 +12,11 @@ using Museo_MVC.DataBase;
 namespace Museo_MVC.Migrations
 {
     [DbContext(typeof(MuseoContext))]
-    partial class MuseoContextModelSnapshot : ModelSnapshot
+    [Migration("20230612073745_NewTable1")]
+    partial class NewTable1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
