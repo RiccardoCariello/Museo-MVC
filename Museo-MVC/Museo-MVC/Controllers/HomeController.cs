@@ -254,7 +254,7 @@ namespace Museo_MVC.Controllers
 
         [Authorize(Roles = "ADMIN")]
         [HttpGet]
-        [ValidateAntiForgeryToken]
+        
         public IActionResult ConfirmOrder(int id)
         {
             return View("ConfirmOrder");
@@ -265,7 +265,7 @@ namespace Museo_MVC.Controllers
         [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult ConfirmOrder(int id , Ordini ordine )
+        public IActionResult ConfirmOrder(int id , SouvenirListOrders ordine )
         {
 
             using (MuseoContext db = new MuseoContext())
@@ -282,9 +282,9 @@ namespace Museo_MVC.Controllers
 
                     if( souvenirToOrder != null)
                     {
-                        db.Ordini.Add(ordine);
+                        db.Ordini.Add(ordine.Orders);
 
-                        souvenirToOrder.Quantity += ordine.Quantity;
+                        souvenirToOrder.Quantity += ordine.Orders.Quantity;
 
                         db.SaveChanges();
                         return RedirectToAction("Souvenir");
