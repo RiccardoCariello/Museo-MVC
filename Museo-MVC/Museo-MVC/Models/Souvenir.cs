@@ -23,7 +23,7 @@ namespace Museo_MVC.Models
 
 		
 
-		public List<Ordini> OrdiniList { get; set; }
+		public List<Ordini>? OrdiniList { get; set; }
         
 
         public Souvenir() { }

@@ -279,18 +279,27 @@ namespace Museo_MVC.Controllers
                 }
                 else
                 {
-                   ordine.Souvenirs = db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault();
+                    ordine.Souvenirs = db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault();
+
+                    Ordini newOrder = new Ordini();
+                    newOrder.Price = ordine.Souvenirs.Price;
+                    newOrder.SouvenirName = ordine.Souvenirs.Name;
+                    newOrder.Souvenir = ordine.Souvenirs;
+                    newOrder.Fornitore = ordine.Orders.Fornitore;
+                    newOrder.Date = DateTime.Now;
+                    newOrder.Quantity = ordine.Orders.Quantity;
+                    newOrder.SouvenirId = id;
+                    newOrder.Name = ordine.Orders.Name;
 
 
-
-                    if (ordine != null)
+                    if (newOrder != null)
                     {
                         
-
-                        db.Ordini.Add(ordine.Orders);
+                        
+                        db.Add(newOrder);
 
                         db.SaveChanges();
-                        return View("Souvenir");
+                        return RedirectToAction("Souvenir");
 
                     }
                     else
