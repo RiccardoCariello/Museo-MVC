@@ -254,7 +254,6 @@ namespace Museo_MVC.Controllers
 
         [Authorize(Roles = "ADMIN")]
         [HttpGet]
-
         public IActionResult ConfirmOrder(int id)
         {
             using (MuseoContext db = new MuseoContext())
@@ -289,7 +288,7 @@ namespace Museo_MVC.Controllers
                         souvenirToOrder.Quantity += ordine.Orders.Quantity;
 
                         db.SaveChanges();
-                        return RedirectToAction("Souvenir");
+                        return View("Souvenir");
 
                     }
                     else
