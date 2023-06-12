@@ -258,10 +258,11 @@ namespace Museo_MVC.Controllers
         {
             using (MuseoContext db = new MuseoContext())
             {
+                SouvenirListOrders modelForView = new SouvenirListOrders();
+                modelForView.Souvenirs = db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault();
                 
                 
-                
-                return View("ConfirmOrder");
+                return View("ConfirmOrder", modelForView);
             }
         }
 

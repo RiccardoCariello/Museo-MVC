@@ -25,7 +25,7 @@
 				
 				<div class="mb-3">
 					<label asp-for="Orders.Price" class="form-label">Prezzo</label>
-					<input asp-for="Orders.Price" type="text" class="form-control" placeholder="Prezzo..." readonly>
+					<input asp-for="Orders.Price" type="text" class="form-control" placeholder="@Model.Souvenirs.Price" readonly>
 					<span asp-validation-for="Orders.Price" class="text-danger"></span>
 				</div>
 			</div>
