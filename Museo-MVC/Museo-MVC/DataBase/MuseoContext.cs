@@ -17,6 +17,8 @@ namespace Museo_MVC.DataBase
 
         public DbSet<Acquisti> Acquistis { get; set; }
 
+        public DbSet<Ordini> Ordini { get; set; }
+
 
 
 
