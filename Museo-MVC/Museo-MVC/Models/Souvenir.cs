@@ -15,6 +15,7 @@ namespace Museo_MVC.Models
 		public string Description { get; set; }
 		public float Price { get; set; }
 
+		public int? Quantity { get; set; }
         public int? CategoryId { get; set; }
         public Category? Category { get; set; }
 
@@ -22,13 +23,14 @@ namespace Museo_MVC.Models
         
 
         public Souvenir() { }
-		public Souvenir(string img, string name, string description, float price)
+		public Souvenir(string img, string name, string description, float price, int quantity)
 		{
 			Img = img;
 			Name = name;
 			Description = description;
 			Price = price;
 			AcquistiList = new List<Acquisti>();
+			Quantity = quantity;
 		}
 	}
 }
