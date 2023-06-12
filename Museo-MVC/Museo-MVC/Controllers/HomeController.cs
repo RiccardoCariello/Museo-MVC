@@ -1,11 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Museo_MVC.DataBase;
-using Museo_MVC.Models;
-using Museo_MVC.Models.ModelForViews;
-using System.Diagnostics;
-
-namespace Museo_MVC.Controllers
+﻿namespace Museo_MVC.Controllers
 {
     //[Authorize(Roles = "ADMIN,USER")]
     public class HomeController : Controller
@@ -254,6 +247,7 @@ namespace Museo_MVC.Controllers
 
         [Authorize(Roles = "ADMIN")]
         [HttpGet]
+
         public IActionResult ConfirmOrder(int id)
         {
             using (MuseoContext db = new MuseoContext())
@@ -266,6 +260,7 @@ namespace Museo_MVC.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult ConfirmOrder(int id, Ordini ordine)
+        public IActionResult ConfirmOrder(int id, SouvenirListOrders ordine)
         {
 
             using (MuseoContext db = new MuseoContext())
@@ -282,9 +277,9 @@ namespace Museo_MVC.Controllers
 
                     if (souvenirToOrder != null)
                     {
-                        db.Ordini.Add(ordine);
+                        db.Ordini.Add(ordine.Orders);
 
-                        souvenirToOrder.Quantity += ordine.Quantity;
+                        souvenirToOrder.Quantity += ordine.Orders.Quantity;
 
                         db.SaveChanges();
                         return RedirectToAction("Souvenir");

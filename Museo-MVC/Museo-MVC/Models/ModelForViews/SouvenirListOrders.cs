@@ -2,7 +2,8 @@
 {
 	public class SouvenirListOrders
 	{
-		public List<Souvenir>? SouvenirsList { get; set; }
+		//public List<Souvenir>? SouvenirsList { get; set; }
+		public Souvenir Souvenir { get; set; }
 		public Ordini? Orders { get; set; }
 		public Souvenir? Souvenirs { get; set; }
 	}
