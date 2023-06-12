@@ -251,5 +251,30 @@ namespace Museo_MVC.Controllers
                 }
             }
         }
+
+        [Authorize(Roles = "ADMIN")]
+        [HttpGet]
+        [ValidateAntiForgeryToken]
+        public IActionResult ConfirmOrder(int id)
+        {
+            return View("ConfirmOrder");
+        }
+
+
+        /*
+        [Authorize(Roles = "ADMIN")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult ConfirmOrder(int id , )
+        {
+
+            using (MuseoContext db = new MuseoContext())
+            {
+
+            }
+
+
+        }
+        */
     }
 }
