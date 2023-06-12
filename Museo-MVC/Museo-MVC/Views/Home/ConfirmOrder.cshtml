@@ -8,8 +8,8 @@
 
 				@Html.AntiForgeryToken()
 				<div class="mb-3">
-					<label asp-for="@Model.Orders.Name" class="form-label">Email</label>
-					<input asp-for="@Model.Orders.Name" type="text" class="form-control" placeholder="Email..." required>
+					<label asp-for="@Model.Orders.Name" class="form-label">Name</label>
+					<input asp-for="@Model.Orders.Name" type="text" class="form-control" placeholder="@Model.Orders.Name" readonly>
 					<span asp-validation-for="@Model.Orders.Name" class="text-danger"></span>
 				</div>
 				<div class="mb-3">

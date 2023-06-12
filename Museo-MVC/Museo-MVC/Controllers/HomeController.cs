@@ -4,6 +4,7 @@ using Museo_MVC.DataBase;
 using Museo_MVC.Models;
 using Museo_MVC.Models.ModelForViews;
 using System.Diagnostics;
+using static NuGet.Packaging.PackagingConstants;
 
 namespace Museo_MVC.Controllers
 {
@@ -101,15 +102,32 @@ namespace Museo_MVC.Controllers
             {
                 using (MuseoContext db = new MuseoContext())
                 {
-
+                    Souvenir souvenirPerLaQuantità = db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault();
                     //acquisto.Acquistis.Souvenir = db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault();
-                    acquisto.Acquistis.SouvenirId = id;
-                    acquisto.Acquistis.Date = DateTime.UtcNow;
-                    db.Acquistis.Add(acquisto.Acquistis);
-                    db.SaveChanges();
-                }
+                    if(souvenirPerLaQuantità.Quantity >= acquisto.Acquistis.Quantity)
+                    {
+						souvenirPerLaQuantità.Quantity = souvenirPerLaQuantità.Quantity - acquisto.Acquistis.Quantity;
+						acquisto.Acquistis.SouvenirId = id;
+						acquisto.Acquistis.Date = DateTime.UtcNow;
+						db.Acquistis.Add(acquisto.Acquistis);
+						db.SaveChanges();
+						return RedirectToAction("Souvenir");
+					}
+					else
+					{
+						ModelState.AddModelError("Acquistis.Quantity", "Quantità non disponibile");
+						return View("NomeDellaTuaVista", acquisto);
+					}
+
+
+
+				}
             }
-            return RedirectToAction("Souvenir");
+            else
+            {
+				return Problem("L'Impossibile continuare l'acquisto!");
+			}
+            
         }
 
         //PAGINA CONFERMA ELIMINAZIONE
@@ -260,6 +278,10 @@ namespace Museo_MVC.Controllers
             {
                 SouvenirListOrders modelForView = new SouvenirListOrders();
                 modelForView.Souvenirs = db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault();
+
+				string userName = User.Identity.Name;
+				modelForView.Orders = new Ordini();
+				modelForView.Orders.Name = userName;
                 
                 
                 return View("ConfirmOrder", modelForView);
