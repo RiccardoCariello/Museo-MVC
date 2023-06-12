@@ -36,14 +36,15 @@ body {
     text-decoration-color: #FFC26F;
 }
 
-/*.navbar-over {
+.navbar-over {
     list-style-type: none;
     margin: 0;
     padding: 7px;
     backdrop-filter: blur(5px);
     background-color: rgba(255, 255, 255, .15);
     width: 100%;
-}  */  
+    z-index: 999;
+}  
     
 
 
