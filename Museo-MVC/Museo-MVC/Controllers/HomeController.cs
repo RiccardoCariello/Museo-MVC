@@ -261,20 +261,50 @@ namespace Museo_MVC.Controllers
         }
 
 
-        /*
+        
         [Authorize(Roles = "ADMIN")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult ConfirmOrder(int id , )
+        public IActionResult ConfirmOrder(int id , Ordini ordine )
         {
 
             using (MuseoContext db = new MuseoContext())
             {
+                if (!ModelState.IsValid)
+                {
+                    return View("ConfirmOrder", ordine);
+                }
+                else
+                {
+                    Souvenir? souvenirToOrder = db.Souvenirs.Where( souvenir => souvenir.Id == id ).FirstOrDefault();
+
+                    
+
+                    if( souvenirToOrder != null)
+                    {
+                        db.Ordini.Add(ordine);
+
+                        souvenirToOrder.Quantity += ordine.Quantity;
+
+                        db.SaveChanges();
+                        return RedirectToAction("Souvenir");
+
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                }
+
+               
+
+
+
 
             }
 
 
         }
-        */
+        
     }
 }
