@@ -18,7 +18,7 @@ namespace Museo_MVC.Models
         
         public DateTime? Date { get; set;}
 
-       
+        public string Fornitore { get; set;}
 
         public string SouvenirName { get; set; } 
 
@@ -32,7 +32,7 @@ namespace Museo_MVC.Models
 
         public Ordini() { }
 
-        public Ordini (string name, string surname, int souvenirId, string souvenirName, int quantity, float price)
+        public Ordini (string name, string surname, int souvenirId, string souvenirName, int quantity, float price, string fornitore)
         {
             
             Name = name;
@@ -42,6 +42,7 @@ namespace Museo_MVC.Models
             SouvenirName = souvenirName;
             Quantity = quantity;
             Price = price;
+            Fornitore = fornitore;
         }
     }
 }
