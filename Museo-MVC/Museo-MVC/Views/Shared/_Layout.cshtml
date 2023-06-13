@@ -11,18 +11,10 @@
     <link href="/css/site.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <header>
         @Html.Partial("_Header")
-        
-        
-        
-        
-        
-        
-        
-        
-        
+              
         <!--  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 bg-navbar">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Museo_MVC</a>
@@ -45,12 +37,12 @@
     -->
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-3 flex-grow-1">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted fixed-bottom  w-100 mt-auto">
       
         
         @Html.Partial("_Footer")
