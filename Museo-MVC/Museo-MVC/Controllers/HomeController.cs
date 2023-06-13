@@ -86,11 +86,15 @@ namespace Museo_MVC.Controllers
             using (MuseoContext db = new MuseoContext())
             {
                 //SouvenirListCategory modelForView = new SouvenirListCategory();
-                //SouvenirListAcquistis modelForView = new SouvenirListAcquistis();
-                //modelForView.Acquistis = new Acquisti();
+                SouvenirListAcquistis modelForView = new SouvenirListAcquistis();
+                
+                modelForView.Acquistis = new Acquisti();
+                modelForView.Acquistis.Souvenir = db.Souvenirs.Where(souvenir=> souvenir.Id == id).FirstOrDefault();
+                modelForView.SouvenirsList = db.Souvenirs.ToList();
                 //modelForView.Souvenirs = db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault();
+                
                 //modelForView.SouvenirsList.Add(db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault());
-                return View("ConfirmPurchase");
+                return View("ConfirmPurchase", modelForView);
             }
         }
 
