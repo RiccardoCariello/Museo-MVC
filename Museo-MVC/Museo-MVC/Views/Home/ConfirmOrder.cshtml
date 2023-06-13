@@ -1,40 +1,44 @@
 ﻿@using Museo_MVC.Models.ModelForViews
 @model SouvenirListOrders
 
-<div class="container" style="color: #C38154;">
-	<form asp-controller="Home" asp-action="ConfirmOrder"  method="post">
-		<div class="row">
-			<div class="col">
+<div class="container justify-content-center align-items-center p-5 m-5" style="color: #C38154;">
+	<div class=" row cols-3 justify-content-center align-content-center">
 
-				@Html.AntiForgeryToken()
-				<div class="mb-3">
-					<label asp-for="@Model.Orders.Name" class="form-label">Name</label>
-					<input asp-for="@Model.Orders.Name" type="text" class="form-control" placeholder="@Model.Orders.Name" readonly>
-					<span asp-validation-for="@Model.Orders.Name" class="text-danger"></span>
-				</div>
-				<div class="mb-3">
-					<label asp-for="Orders.Quantity" class="form-label">Quantità</label>
-					<input asp-for="Orders.Quantity" type="text" class="form-control" placeholder="1, 2, 3, ..." required>
-					<span asp-validation-for="Souvenirs.Quantity" class="text-danger"></span>
-				</div>
-				<div class="mb-3">
-					<label asp-for="Orders.Fornitore" class="form-label">Nome Fornitore</label>
-					<input asp-for="Orders.Fornitore" type="text" class="form-control" placeholder="Fornitore..." required>
-					<span asp-validation-for="Orders.Fornitore" class="text-danger"></span>
-				</div>
+		<div class=" col-6 justify-content-center align-content-center">
+			<form asp-controller="Home" asp-action="ConfirmOrder" method="post" class="justify-content-center">
 				
-				<div class="mb-3">
-					<label asp-for="Orders.Price" class="form-label">Prezzo</label>
-					<input asp-for="Orders.Price" type="text" class="form-control" placeholder="@Model.Souvenirs.Price &#8364;" readonly>
-					<span asp-validation-for="Orders.Price" class="text-danger"></span>
+
+						@Html.AntiForgeryToken()
+						<div class="mb-3">
+							<label asp-for="@Model.Orders.Name" class="form-label">Name</label>
+							<input asp-for="@Model.Orders.Name" type="text" class="form-control" placeholder="@Model.Orders.Name" readonly>
+							<span asp-validation-for="@Model.Orders.Name" class="text-danger"></span>
+						</div>
+						<div class="mb-3">
+							<label asp-for="Orders.Quantity" class="form-label">Quantità</label>
+							<input asp-for="Orders.Quantity" type="text" class="form-control" placeholder="1, 2, 3, ..." required>
+							<span asp-validation-for="Souvenirs.Quantity" class="text-danger"></span>
+						</div>
+						<div class="mb-3">
+							<label asp-for="Orders.Fornitore" class="form-label">Nome Fornitore</label>
+							<input asp-for="Orders.Fornitore" type="text" class="form-control" placeholder="Fornitore..." required>
+							<span asp-validation-for="Orders.Fornitore" class="text-danger"></span>
+						</div>
+
+						<div class="mb-3">
+							<label asp-for="Orders.Price" class="form-label">Prezzo</label>
+							<input asp-for="Orders.Price" type="text" class="form-control" placeholder="@Model.Souvenirs.Price &#8364;" readonly>
+							<span asp-validation-for="Orders.Price" class="text-danger"></span>
+						</div>
+					
+				<div class="row">
+					<div class="col">
+						<a href="@Url.Action("Souvenir", "Home")" class="btn btn-light btn-outline-warning my-2">Annulla</a>
+						<button type="submit" class="btn btn-dark">Conferma Ordine</button>
+					</div>
 				</div>
-			</div>
+			</form>
 		</div>
-		<div class="row">
-			<div class="col">
-				<a href="@Url.Action("Souvenir", "Home")" class="btn btn-light btn-outline-warning my-2">Annulla</a>
-				<button type="submit" class="btn btn-dark">Conferma Ordine</button>
-			</div>
-		</div>
-	</form>
+
+	</div>
 </div>
