@@ -1,6 +1,14 @@
 ﻿@using Museo_MVC.Models.ModelForViews
 @model SouvenirListCategory;
 
+<style>
+	body {
+		background-image: url('/img/shyam.jpg');
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+</style>
+
 <h1>Aggiungi qui il tuo Souvenir</h1>
 <div class="container">
 	<form asp-controller="Home" asp-action="Create" method="post">
