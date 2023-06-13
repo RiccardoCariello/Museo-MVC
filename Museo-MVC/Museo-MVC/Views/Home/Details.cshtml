@@ -19,6 +19,13 @@
                         </p>
 
                         <p class="m-2" style="color: #FFC26F;">Disponibili : @Model.Quantity</p>
+                        @if (User.IsInRole("ADMIN"))
+                        {
+                            if (Model.Quantity < 5)
+                            {
+                                <h5 class="card_text m-2 text-danger">Prodotto quasi esaurito!</h5>
+                            }
+                        }
 
                         <div class="d-flex align-items-center justify-content-around">
                             @if (User.IsInRole("ADMIN"))
