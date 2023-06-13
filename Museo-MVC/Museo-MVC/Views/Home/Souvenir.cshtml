@@ -22,13 +22,18 @@
 
                             <p class="card-text card_text m-2">@souvenir.Price &#8364;</p>
                             <p class="card_text m-2">Disponibili : @souvenir.Quantity</p>
-                            @if (User.IsInRole("ADMIN"))
+                        @if (User.IsInRole("ADMIN"))
+                        {
+                                if (souvenir.Quantity < 5 & souvenir.Quantity >= 2)
                             {
-                                if(souvenir.Quantity < 5)
-                                {
-                                    <h5 class="card_text m-2 text-danger">Prodotto quasi esaurito!</h5>
+                                <h5 class="card_text m-2 text-warning">Prodotto quasi esaurito!</h5>
                                 }
+                                else if (souvenir.Quantity <= 1)
+                            {
+                                <h5 class="card_text m-2 text-danger">Ultimo Pezzo Rimasto!</h5>
                             }
+                                                        
+                        }
 
                             <div class="d-flex  justify-content-around">
 

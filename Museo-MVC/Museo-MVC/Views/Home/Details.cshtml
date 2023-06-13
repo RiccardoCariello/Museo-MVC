@@ -21,10 +21,14 @@
                         <p class="m-2" style="color: #FFC26F;">Disponibili : @Model.Quantity</p>
                         @if (User.IsInRole("ADMIN"))
                         {
-                            if (Model.Quantity < 5)
+                            if (Model.Quantity < 5 & Model.Quantity >= 2)
                             {
-                                <h5 class="card_text m-2 text-danger">Prodotto quasi esaurito!</h5>
+                                <h5 class="card_text m-2 text-warning">Prodotto quasi esaurito!</h5>
+                            } else if (Model.Quantity <= 1)
+                            {
+                                <h5 class="card_text m-2 text-danger">Ultimo Pezzo Rimasto!</h5>
                             }
+                                                        
                         }
 
                         <div class="d-flex align-items-center justify-content-around">
