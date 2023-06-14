@@ -23,37 +23,49 @@ namespace Museo_MVC.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            /*
+            
              
              using(MuseoContext db = new MuseoContext())
-            {
+             {
                 int newCount = 0;
                 int? souvenirId = 0;
                 int? oldSouvenirId = 0;
                 int count = 0;
                 if(db.Acquistis != null)
                 {
-                    foreach (Acquisti acquisti in db.Acquistis)
-                    {
-                        souvenirId = acquisti.SouvenirId;
+                    
 
-                        newCount = db.Acquistis.Count(a => a.SouvenirId == souvenirId );
-                        if(newCount > count)
+						var query = db.Acquistis.GroupBy(a => a.SouvenirId).Select(g => new
+		                {
+			                SouvenirId = g.Key,
+			                Quantity = g.Sum(a => a.Quantity)
+		                })
+		                .OrderByDescending(g => g.Quantity)
+		                .FirstOrDefault();
+                        if(query != null)
                         {
-                            count = newCount;
-                            oldSouvenirId = souvenirId;
+                            souvenirId = query.SouvenirId;
+                            count = query.Quantity;
+
+                            Souvenir modelForView = db.Souvenirs.Where( souvenir => souvenir.Id == souvenirId ).FirstOrDefault();
+                            modelForView.Quantity = count;
+
+                            return View(modelForView);
                         }
-                    }
+                        else
+                        {
+                            return View();
+                        }
+                   
 
                 }
                 else
                 {
                     return View();
                 }
-
-            }
+             }
              
-             */
+             
 
             return View();
 
