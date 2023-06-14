@@ -148,6 +148,10 @@ min-height: 100vh;
     min-width: 305px;
 }
 
+.card_img {
+    height: 80%;
+}
+
 .card_text {
     text-decoration-color: #FFC26F;
 }
