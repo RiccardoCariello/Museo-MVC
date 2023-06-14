@@ -27,9 +27,9 @@ namespace Museo_MVC.Controllers
              
              using(MuseoContext db = new MuseoContext())
              {
-                int newCount = 0;
+                
                 int? souvenirId = 0;
-                int? oldSouvenirId = 0;
+                
                 int count = 0;
                 if(db.Acquistis != null)
                 {
