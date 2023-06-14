@@ -15,6 +15,9 @@
                 <li class="nav-item">
                     <a class="nav-link text-navbar" aria-current="page" href="@Url.Action("Souvenir", "Home")">Catalogo</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-navbar" aria-current="page" href="@Url.Action("Contacts", "Home")">Contatti</a>
+                </li>
                 @if (User.IsInRole("ADMIN"))
                 {
                     <li class="nav-item">
@@ -23,6 +26,7 @@
                 }
                 <!-- code omitted -->
                 <partial name="_LoginPartial" />
+                
             </ul>
         </div>
     </div>
