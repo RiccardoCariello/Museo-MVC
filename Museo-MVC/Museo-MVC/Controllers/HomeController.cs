@@ -46,6 +46,10 @@ namespace Museo_MVC.Controllers
             }
         }
 
+        public IActionResult Contacts()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {
