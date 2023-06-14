@@ -24,7 +24,7 @@
                             @Model.Price &#8364;
                         </p>
                         <div class="align-items-center">
-                            <a href="@Url.Action("Souvenir", "Home", new {id = Model.Id})" class="btn btn-light btn-outline-warning my-2">Annulla</a>
+                            <a href="@Url.Action("Souvenir", "Home")" class="btn btn-light btn-outline-warning my-2">Annulla</a>
                             <form asp-controller="Home" asp-action="Delete" asp-route-id="@Model.Id" method="post">
                                 @Html.AntiForgeryToken()
                                 <button type="submit" style="border: none; background-color: transparent;">
