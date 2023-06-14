@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.VisualBasic.Syntax;
+using Microsoft.EntityFrameworkCore;
 using Museo_MVC.DataBase;
 using Museo_MVC.Models;
 using Museo_MVC.Models.ModelForViews;
@@ -21,12 +23,44 @@ namespace Museo_MVC.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            /*
+             
+             using(MuseoContext db = new MuseoContext())
+            {
+                int newCount = 0;
+                int? souvenirId = 0;
+                int? oldSouvenirId = 0;
+                int count = 0;
+                if(db.Acquistis != null)
+                {
+                    foreach (Acquisti acquisti in db.Acquistis)
+                    {
+                        souvenirId = acquisti.SouvenirId;
 
+                        newCount = db.Acquistis.Count(a => a.SouvenirId == souvenirId );
+                        if(newCount > count)
+                        {
+                            count = newCount;
+                            oldSouvenirId = souvenirId;
+                        }
+                    }
+
+                }
+                else
+                {
+                    return View();
+                }
+
+            }
+             
+             */
 
             return View();
 
 
         }
+
+
         // ACTIONS PER LA VISUALIZZAZIONE COMPLETA DEI SOUVENIR 
         [HttpGet]
         public IActionResult Souvenir()

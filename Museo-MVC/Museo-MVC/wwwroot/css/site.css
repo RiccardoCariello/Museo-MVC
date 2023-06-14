@@ -109,17 +109,21 @@ min-height: 100vh;
     min-height: 100vh;
 }
 
-.Create_bg {
+/*
+
+    .Create_bg {
     background-image: url('/img/shyam.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
-    /* Altri stili per l'elemento di sfondo, ad esempio altezza e larghezza */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+    // Altri stili per l'elemento di sfondo, ad esempio altezza e larghezza 
+display: flex;
+align-items: center;
+justify-content: center;
+min-height: 100vh;
 }
+
+*/
 
 .delete_bg {
     background-image: url('../img/sfondoDelete.jpg');
