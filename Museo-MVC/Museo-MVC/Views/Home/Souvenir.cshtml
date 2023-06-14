@@ -2,26 +2,26 @@
 
 <section class="souvenir_bg">
 
-    <div class="container mt-5 justify-content-between align-content-between">
+    <div class="container mt-5 justify-content-between align-content-between flex-wrap">
         <div class="row justify-content-center my-5">
             <div class="col-6 d-block text-center">
                 <h1 class="card_text" style="color: #FFC26F;">I NOSTRI SOUVENIR</h1>
             </div>
         </div>
 
-        <div class="row my-5 justify-content-center">
+        <div class="row my-5 justify-content-center ">
             @foreach (Souvenir souvenir in Model)
             {
-                <div class="col-4 justify-content-center ">
+                <div class="flex-column col-sm-6 col-md-4 justify-content-center mb-3">
 
-                    <div class="card card_border">
+                    <div class="card card_border h-100">
                         <img src="@souvenir.Img" class="card-img-top" alt="Foto Souvenir">
                         <div class="card-body" style="color: #FFC26F;">
                             <h3 class="card-title">@souvenir.Name</h3>
 
 
-                            <p class="card-text card_text m-2">@souvenir.Price &#8364;</p>
-                            <p class="card_text m-2">Disponibili : @souvenir.Quantity</p>
+                            <p class="card-text card_text text-center m-2">@souvenir.Price &#8364;</p>
+                            <p class="card_text m-2 text-center">Disponibili : @souvenir.Quantity</p>
                         @if (User.IsInRole("ADMIN"))
                         {
                                 if (souvenir.Quantity < 5 & souvenir.Quantity >= 2)
