@@ -1,0 +1,33 @@
+﻿
+<nav class="navbar navbar-expand-lg bg-navbar navbar-over">
+    <div class="container-fluid">
+        <a class="navbar-brand text-navbar" href="@Url.Action("Index", "Home")">Local Stuff Museum</a>
+        <button class="navbar-toggler text-navbar" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse text-navbar" id="navbarNav">
+            <ul class="navbar-nav text-navbar">
+                <!--   TASTO HOME INUTILIZZATO
+                     <li class="nav-item text-navbar">
+                     <a class="nav-link active text-navbar"  aria-current="page" href="@Url.Action("Index", "Home")">Home</a>
+                     </li>
+                -->
+                <li class="nav-item">
+                    <a class="nav-link text-navbar" aria-current="page" href="@Url.Action("Souvenir", "Home")">Catalogo</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-navbar" aria-current="page" href="@Url.Action("Contacts", "Home")">Contatti</a>
+                </li>
+                @if (User.IsInRole("ADMIN"))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-navbar" aria-current="page" href="@Url.Action("Index", "User")">Admin</a>
+                    </li>
+                }
+                <!-- code omitted -->
+                <partial name="_LoginPartial" />
+                
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,62 @@
+﻿@using Museo_MVC.Models.ModelForViews
+@model SouvenirListCategory;
+
+<style>
+	body {
+		background-image: url('/img/shyam.jpg');
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+</style>
+
+<h1 style="color: #FFC26F;">Aggiungi qui il tuo Souvenir</h1>
+<div class="container">
+	<form asp-controller="Home" asp-action="Create" method="post">
+		<div class="row">
+			<div class="col">
+
+				@Html.AntiForgeryToken()
+				<div class="mb-3">
+					<label asp-for="Souvenirs.Img" class="form-label" style="color: #FFC26F;">Immagine</label>
+					<input asp-for="Souvenirs.Img" type="text" class="form-control" placeholder="URL/Percorso..." required>
+					<span asp-validation-for="Souvenirs.Img" class="text-danger"></span>
+				</div>
+				<div class="mb-3">
+					<label asp-for="Souvenirs.Name" class="form-label" style="color: #FFC26F;">Nome</label>
+					<textarea asp-for="Souvenirs.Name" rows="10" class="form-control" placeholder="Nome..."></textarea>
+					<span asp-validation-for="Souvenirs.Name" class="text-danger"></span>
+				</div>
+				<div class="mb-3">
+					<label asp-for="Souvenirs.Description" class="form-label" style="color: #FFC26F;">Descrizione</label>
+					<input asp-for="Souvenirs.Description" type="text" class="form-control" placeholder="Descrizione..." required>
+					<span asp-validation-for="Souvenirs.Description" class="text-danger"></span>
+				</div>
+				<div class="mb-3">
+					<label asp-for="Souvenirs.Price" class="form-label" style="color: #FFC26F;">Prezzo</label>
+					<input asp-for="Souvenirs.Price" type="text" class="form-control" placeholder="Prezzo..." required>
+					<span asp-validation-for="Souvenirs.Price" class="text-danger"></span>
+				</div>
+				<div class="mb-3">
+					<p style="color: #FFC26F;">Categoria:</p>
+					<select asp-for="Souvenirs.CategoryId" title="SouvenirCategory" rows="10" class="d-block w-100">
+						<option value=""></option>
+						@foreach (Category category in Model.Categories ?? new List<Category>())
+						{
+							<option value="@category.Id" selected="@(Model.Souvenirs.CategoryId == category.Id ? "selected" : null)">@category.Name</option>
+						}
+					</select>
+				</div>
+				<div class="mb-3">
+					<label asp-for="Souvenirs.Quantity" class="form-label" style="color: #FFC26F;">Quantità</label>
+					<input asp-for="Souvenirs.Quantity" type="text" class="form-control" placeholder="Quantità..." required>
+					<span asp-validation-for="Souvenirs.Quantity" class="text-danger"></span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<button type="submit" class="btn btn-primary">Aggiungi</button>
+			</div>
+		</div>
+	</form>
+</div>

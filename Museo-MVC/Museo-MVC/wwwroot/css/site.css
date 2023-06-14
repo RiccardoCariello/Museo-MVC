@@ -14,5 +14,147 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    /*
+      background-color: #F9E0BB;
+  scroll-padding-top: 100px;
+
+  */
 }
+
+
+.bg-navbar {
+    background-color: #884A39;
+}
+
+.text-navbar {
+    color: #FFC26F;
+    text-decoration: rgba(255, 194, 111);
+    text-decoration: #FFC26F;
+}
+
+.text_decoration {
+    text-decoration-color: #FFC26F;
+}
+
+.navbar-over {
+    /*
+    list-style-type: none;
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 7px;
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, .15);
+    width: 100%;
+    z-index: 999;
+        */
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    
+    z-index: 1000;
+}  
+    
+
+
+.landing {
+    background-image: url('../img/olha-maliar.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    /* Altri stili per l'elemento di sfondo, ad esempio altezza e larghezza */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.souvenir_bg {
+    background-image: url('../img/adrianna-geo.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    /* Altri stili per l'elemento di sfondo, ad esempio altezza e larghezza */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.CRUD_bg {
+    background-image: url('../img/elizabeth-george-E_evIcvACS8-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    /* Altri stili per l'elemento di sfondo, ad esempio altezza e larghezza */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.delete_bg {
+    background-image: url('../img/sfondoDelete.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    /* Altri stili per l'elemento di sfondo, ad esempio altezza e larghezza */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    
+}
+
+.card_border {
+    border: 1px solid #FFC26F;
+    background-color: #C38154;
+    min-width: 305px;
+}
+
+.card_text {
+    text-decoration-color: #FFC26F;
+}
+
+.button_color {
+    color: #FFC26F;
+}
+
+
+.bg_opacity {
+    background-color: #FFC26F80;
+}
+
+.color {
+    color: #FFC26F;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* {
+    font-family: 'EB Garamond', serif;
+}
+
+
+
+
+
+
+
+
+
