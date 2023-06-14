@@ -71,6 +71,18 @@ body {
     min-height: 100vh;
 }
 
+.Contacts_bg {
+    background-image: url('../img/contacts_bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    /* Altri stili per l'elemento di sfondo, ad esempio altezza e larghezza */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
 .souvenir_bg {
     background-image: url('../img/adrianna-geo.jpg');
     background-repeat: no-repeat;
