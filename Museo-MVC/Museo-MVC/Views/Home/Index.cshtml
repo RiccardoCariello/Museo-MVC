@@ -1,10 +1,28 @@
-﻿<section class="landing">
+﻿@model Souvenir
+
+<style>
+	body {
+		background-image: url('../img/olha-maliar.jpg');
+		background-repeat: no-repeat;
+		background-size: cover;
+		/* Altri stili per l'elemento di sfondo, ad esempio altezza e larghezza */
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 100vh;
+	}
+</style>
+
+<!-- <section class="landing"> -->
 	<div class="container align-items-center align-self-center py-5">
 		<div class="row  text-center py-5">
 			<h1 style="color: #FFC26F">Local Stuff Museum</h1>
 		</div>
+
+
+		
 		<div class="row">
-			<div class="col-12">
+			<div class="col-8">
 				<div class="card text-center">
 					<div class="card-body  " style="background-color: rgba(255, 194, 111, 0.5);">
 						<p style="color: #884A39;">
@@ -12,7 +30,7 @@
 
 								Appena entrate, sarete accolte da un'atmosfera vibrante e un'architettura unica, pensata per creare una connessione intima tra gli spettatori e le opere d'arte esposte. Le nostre sale espositive sono ampie e luminose, fornendo uno spazio ideale per esplorare le creazioni degli artisti contemporanei più talentuosi.
 
-								Il mio museo è noto per la sua curatela eclettica e audace, che presenta una vasta gamma di stili, tecniche e concetti artistici. Potrete ammirare dipinti, sculture, installazioni interattive, opere video e molto altro ancora, tutto rigorosamente selezionato per suscitare emozioni, stimolare la riflessione e offrire una prospettiva nuova sul mondo che ci circonda.<br /> La ricerca costante della qualità è la caratteristica principale della Pizzeria.
+								Il mio museo è noto per la sua curatela eclettica e audace, che presenta una vasta gamma di stili, tecniche e concetti artistici. Potrete ammirare dipinti, sculture, installazioni interattive, opere video e molto altro ancora, tutto rigorosamente selezionato per suscitare emozioni, stimolare la riflessione e offrire una prospettiva nuova sul mondo che ci circonda.
 						</p>
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="120" height="120">
 							<path d="M0 0h24v24H0z" fill="none" />
@@ -21,6 +39,18 @@
 					</div>	
 				</div>
 			</div>
+		@if(Model != null)
+		{
+			<div class="col-4">
+				<div class="card card_border">
+                <img src="@Model.Img" class="card-img-top">
+					<div class="card-body rounded" style="background-color: #F9E0BB;">
+						<h2>@Model.Name</h2>
+						<h5>@Model.Quantity Acquisti</h5>
+					</div>
+				</div>
+			</div>
+		}
 		</div>
 	</div>
-</section>
+<!-- </section> -->

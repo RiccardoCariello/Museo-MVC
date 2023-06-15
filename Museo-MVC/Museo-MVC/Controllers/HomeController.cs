@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.VisualBasic.Syntax;
+using Microsoft.EntityFrameworkCore;
 using Museo_MVC.DataBase;
 using Museo_MVC.Models;
 using Museo_MVC.Models.ModelForViews;
@@ -21,12 +23,55 @@ namespace Museo_MVC.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            
+             
+             using(MuseoContext db = new MuseoContext())
+             {
+                
+                int? souvenirId = 0;
+                
+                int count = 0;
+                if(db.Acquistis != null)
+                {
+                    
 
+						var query = db.Acquistis.GroupBy(a => a.SouvenirId).Select(g => new
+		                {
+			                SouvenirId = g.Key,
+			                Quantity = g.Sum(a => a.Quantity)
+		                })
+		                .OrderByDescending(g => g.Quantity)
+		                .FirstOrDefault();
+                        if(query != null)
+                        {
+                            souvenirId = query.SouvenirId;
+                            count = query.Quantity;
 
-            return View();
+                            Souvenir modelForView = db.Souvenirs.Where( souvenir => souvenir.Id == souvenirId ).FirstOrDefault();
+                            modelForView.Quantity = count;
+
+                            return View(modelForView);
+                        }
+                        else
+                        {
+                            return View();
+                        }
+                   
+
+                }
+                else
+                {
+                    return View();
+                }
+             }
+             
+             
+
 
 
         }
+
+
         // ACTIONS PER LA VISUALIZZAZIONE COMPLETA DEI SOUVENIR 
         [HttpGet]
         public IActionResult Souvenir()
@@ -286,7 +331,7 @@ namespace Museo_MVC.Controllers
             {
                 SouvenirListOrders modelForView = new SouvenirListOrders();
                 modelForView.Souvenirs = db.Souvenirs.Where(souvenir => souvenir.Id == id).FirstOrDefault();
-
+                
 				string userName = User.Identity.Name;
 				modelForView.Orders = new Ordini();
 				modelForView.Orders.Name = userName;

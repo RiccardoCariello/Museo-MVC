@@ -1,7 +1,21 @@
 ﻿    @model List<Souvenir>
 
-<section class="souvenir_bg">
+<style>
+    body {
+        background-image: url('../img/adrianna-geo.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        /* Altri stili per l'elemento di sfondo, ad esempio altezza e larghezza */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+</style>
 
+<!--
+<section class="souvenir_bg">
+-->
     <div class="container mt-5 justify-content-between align-content-between">
         <div class="row justify-content-center my-5">
             <div class="col-6 d-block text-center">
@@ -9,19 +23,19 @@
             </div>
         </div>
 
-        <div class="row my-5 justify-content-center">
+        <div class="row my-5 justify-content-center flex-wrap">
             @foreach (Souvenir souvenir in Model)
             {
-                <div class="col-4 justify-content-center ">
+                <div class="flex-column col-sm-6 col-md-4 justify-content-center mb-3">
 
-                    <div class="card card_border">
-                        <img src="@souvenir.Img" class="card-img-top" alt="Foto Souvenir" style="height: 400px; object-fit: cover">
+                    <div class="card card_border h-100">
+                        <img src="@souvenir.Img" class="card-img-top card_img" alt="Foto Souvenir">
                         <div class="card-body" style="color: #FFC26F;">
                             <h3 class="card-title">@souvenir.Name</h3>
 
 
-                            <p class="card-text card_text m-2">@souvenir.Price &#8364;</p>
-                            <p class="card_text m-2">Disponibili : @souvenir.Quantity</p>
+                            <p class="card-text card_text text-center m-2">@souvenir.Price &#8364;</p>
+                            <p class="card_text m-2 text-center">Disponibili : @souvenir.Quantity</p>
                         @if (User.IsInRole("ADMIN"))
                         {
                                 if (souvenir.Quantity < 5 & souvenir.Quantity >= 2)
@@ -99,5 +113,6 @@
             }
         </div>
     </div>
-
+<!--
 </section>
+-->
